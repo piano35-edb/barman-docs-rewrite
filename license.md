@@ -1,0 +1,1 @@
+[Barman](https://www.pgbarman.org/) is distributed under GNU GPL 3 and maintained by [EnterpriseDB](https://www.enterprisedb.com/), a platinum sponsor of the [PostgreSQL project](https://www.postgresql.org/).

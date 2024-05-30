@@ -1,0 +1,1 @@
+Release history: <https://github.com/EnterpriseDB/barman/releases>
