@@ -1,0 +1,4 @@
+-   [SQL Dump](https://www.postgresql.org/docs/current/static/backup-dump.html)[1](https://docs.pgbarman.org/release/3.10.0/index.html#fn1)
+    -   [File System Level Backup](https://www.postgresql.org/docs/current/static/backup-file.html)
+    -   [Continuous Archiving and Point-in-Time Recovery (PITR)](https://www.postgresql.org/docs/current/static/continuous-archiving.html)
+    -   [Reliability and the Write-Ahead Log](https://www.postgresql.org/docs/current/static/wal.html)

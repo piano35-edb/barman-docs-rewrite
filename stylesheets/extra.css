@@ -1,0 +1,21 @@
+:root {
+    --md-primary-fg-color:        #00c2c7;
+    --md-primary-fg-color--light: ##daf8e3;
+    --md-primary-fg-color--dark:  #005582;
+  }
+
+  .first-color { 
+	background: #233142; 
+}
+	
+.second-color { 
+	background: #455d7a; 
+}
+
+.third-color { 
+	background: #f95959; 
+}
+
+.fourth-color { 
+	background: #e3e3e3; 
+}
