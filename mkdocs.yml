@@ -1,0 +1,219 @@
+site_name: Barman  (backup and recovery manager for PostgreSQL)
+site_url: https://github.com/piano35-edb/mkdocs-material-barman-v1
+theme:
+  name: material
+  #custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    #- navigation.sections
+    #- navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - toc.integrate
+    #- toc.follow
+    -
+   # - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - header.autohide
+  language: en
+  theme:
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+#   palette:
+#     - scheme: default
+#       toggle:
+#         icon: material/toggle-switch-off-outline 
+#         name: Switch to dark mode
+#       primary: custom
+#       accent: purple 
+#     - scheme: slate 
+#       toggle:
+#         icon: material/toggle-switch
+#         name: Switch to light mode    
+#       primary: teal
+#       accent: lime
+# extra_css:
+#   - stylesheets/extra.css
+plugins:
+ # - social
+  - search
+nav:
+  - Home: 'index.md'
+
+  - About:
+    - 'License': 'license.md'
+    - 'Release Notes': 'release-notes.md'
+    - 'Support': 'support.md'
+    - 'Contributing': 'contributing.md'
+    - 'Philosophy': 'philosophy.md'
+
+  - Getting Started: 'getting-started.md'
+  
+  - Installing:
+    - 'Version Support': 'version_support.md'
+    - 'Requirements and Limitations': 'reqs_limits.md'
+    - 'architecture.md'
+    - 'Installation': 'installing.md'
+
+  - Configuring:
+    - 'Configuration Files': 'configuring/configuration_files.md'
+    - 'Configuring Options': 'configuring/configuring_options.md'
+    - 'Configuration Examples': 'configuring/configuration_examples.md'
+    - 'Configuring a New Server': 'configuring/configuring_new_server.md'
+    - 'Configuring SSH': 'configuring/configuring_ssh.md'
+    - 'Configuring WAL Archiving and Replication': 'configuring/configuring_wal_archiving_replication.md'
+    - 'Configuring WAL Streaming': 'configuring/configuring_wal_streaming.md'
+    - 'Configuring Windows': 'configuring/configuring_windows.md'
+  - Customizing:
+    - 'Binary Paths': 'customizing/binary_paths.md'
+    - 'Cluster Integration': 'customizing/cluster_integration.md'
+    - 'Configuration Models': 'customizing/configuration_models.md'
+    - 'Geographical Redundancy': 'customizing/geographical_redundancy.md'
+    - 'Lock File Directory': 'customizing/lock_file_directory.md'
+    - 'Parallel Jobs': 'customizing/parallel_jobs.md'
+    - 'Passive Nodes': 'customizing/passive_nodes.md'
+  - Backing Up:
+    - 'Requirements': 'backing_up/requirements.md'
+    - 'Bandwidth': 'backing_up/bandwidth.md'
+    - 'Cloud and snapshot backups': 'backing_up/cloud-backups.md'
+    - 'Compression': 'backing_up/compression.md'
+    - 'Concurrent': 'backing_up/concurrent.md'
+    - 'Immediate Checkpoint': 'backing_up/immediate_checkpoint.md'
+    - 'Incremental Backups': 'backing_up/incremental.md'
+    - 'Local Backups': 'backing_up/local_backups.md'
+    - 'Streaming Backups': 'backing_up/streaming_backups.md'
+    - 'Backups with rsync / SSH': 'backing_up/rsync_ssh.md'
+    - 'Backups with cloud snapshots': 'backing_up/cloud_snapshots.md'
+  - Recovering: 
+    - Using recovery: 'recovering/using_recovery.md'
+    - 'Cloud and snapshot restores': 'recovering/cloud-restores.md'
+    - 'Recovering from snapshot backups': 'recovering/recovering_from_snapshot.md'
+  - Commands:
+    - Using commands: 'commands/using_commands.md'
+    - Barman CLI: 'commands/barman-cli.md'
+    - General commands: 
+      - 'commands/general/commands_general.md'
+      - 'commands/general/cron.md'
+      - 'commands/general/diagnose.md'
+      - 'commands/general/list-servers.md'
+    - Backup commands: 
+      - 'commands/backup/check-backup.md'
+      - 'commands/backup/show-backup.md'
+    - Cloud commands: 
+      - 'commands/cloud/cloud_commands_using.md'
+      - 'commands/cloud/cloud-backup.md'
+      - 'commands/cloud/cloud-backup-delete.md'
+      - 'commands/cloud/cloud-backup-keep.md'
+      - 'commands/cloud/cloud-backup-list.md'
+      - 'commands/cloud/cloud-backup-show.md'
+      - 'commands/cloud/cloud-check-wal-archive.md'
+      - 'commands/cloud/cloud-restore.md'
+      - 'commands/cloud/cloud-wal-archive.md'
+      - 'commands/cloud/cloud-wal-restore.md'
+      - 'commands/cloud/wal-restore.md'
+      - 'commands/cloud/wal-archive.md'
+      - 'commands/cloud/cloud-template.md'
+    - Server commands: 
+      - 'commands/server/commands_server.md'
+      - 'commands/server/archive-wal.md'
+      - 'commands/server/backup.md'
+      - 'commands/server/check.md'
+      - 'commands/server/config-update.md'
+      - 'commands/server/config-switch.md'
+      - 'commands/server/delete.md'
+      - 'commands/server/generate-manifest.md'
+      - 'commands/server/get-wal.md'
+      - 'commands/server/keep.md'
+      - 'commands/server/list-backups.md'
+      - 'commands/server/list-files.md'
+      - 'commands/server/list-servers.md'
+      - 'commands/server/lock-directory-cleanup.md'
+      - 'commands/server/put-wal.md'
+      - 'commands/server/rebuild-xlogdb.md'
+      - 'commands/server/receive-wal.md'
+      - 'commands/server/recover.md'
+      - 'commands/server/replication-status.md'
+      - 'commands/server/show-servers.md'
+      - 'commands/server/status.md'
+      - 'commands/server/switch-wal.md'
+      - 'commands/server/sync-info.md'
+      - 'commands/server/verify-backup.md'
+      
+    - Recovery commands: 'recovering.md'
+  
+      
+  - Upgrading:
+    - 'Upgrade Paths': 'upgrade_paths.md'
+  - Troubleshooting: 'troubleshooting.md'
+  - Scripts: 
+      - 'scripts/backup-scripts.md'
+      - 'scripts/backup-delete-scripts.md'
+      - 'scripts/cloud-hook-scripts.md'
+      - 'scripts/hook-scripts.md'
+      - 'scripts/wal-archive-scripts.md'
+      - 'scripts/wal-delete-scripts.md'
+      - 'scripts/recovery-scripts.md'
+      - 'scripts/script-variables.md'
+  - Additional Reading:
+    - 'Books': 'external_content/books.md'
+    - 'Blogs': 'external_content/blogs.md'
+    - 'Tutorials': 'external_content/tutorials.md'
+
+extra:
+ social:
+   - icon: fontawesome/brands/youtube
+     link: https://www.youtube.com/user/EnterpriseDB
+   - icon: fontawesome/brands/twitter
+     link: https://twitter.com/EDBPostgres
+   - icon: fontawesome/brands/linkedin
+     link: https://www.linkedin.com/company/enterprisedb
+   - icon: fontawesome/brands/facebook
+     link: https://www.facebook.com/EDBpostgres
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.mark
+  - attr_list
+  - tables
+ # - pymdownx.emoji:
+  #     emoji_index: !!python/name:material.extensions.emoji.twemoji
+   #    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      title: On this page
+      permalink: true
+  - tables
+
+
+copyright: |
+  &copy; 2011-2024  <a href="https://www.enterprisedb.com"  target="_blank" rel="noopener"></a>  <a href="https://www.enterprisedb.com/contact" target"_blank" rel="noopener">EnterpriseDB Corporation.  All rights reserved. </a> 
