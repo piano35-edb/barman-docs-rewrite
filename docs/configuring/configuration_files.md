@@ -10,12 +10,13 @@ Barman has the following three types of configuration files:
 
 The configuration file location can be overridden on a per-user level by `$HOME/.barman.conf`.
 
+Configuration files follow the *INI* format.  Rows starting with `;` are comments.
+
 !!!note
       Models define a set of configuration overrides which can be applied on top of the configuration of Barman servers that are part of the same cluster as the model, through the `barman config-switch` command.
 !!!important
     For historical reasons, you can still have one single configuration file containing both global as well as server and model options. However, for maintenance reasons, this approach is deprecated.
 
-Configuration files follow the *INI* format.  Rows starting with `;` are comments.
 
 # Configuration file directory
 
@@ -44,12 +45,17 @@ Every configuration option has a *scope*:
 -   model
 -   global/server: server options that can be generally set at global level
 
+## Global
+
 Global options are allowed in the *general section*, which is identified in the INI file by the *[barman]* label:
 
 ```bash
 **[barman]**
 *; ... global and global/server options go here*
 ```
+
+## Server
+
 Server options can only be specified in a *server section*, which is identified by a line in the configuration file, in square brackets (`[` and `]`). The server section represents the ID of that server in Barman. 
 
 For example, the following specifies a section for the server named **pg**, which belongs to the **my-cluster** cluster:
@@ -58,6 +64,8 @@ For example, the following specifies a section for the server named **pg**, whic
 cluster=my-cluster
 *; Configuration options for the server named 'pg' go here*
 ```
+
+## Model
 
 Model options can only be specified in a *model section*, which is identified the same way as a *server section*. There can't be any conflicts among the identifier of *server sections* and *model sections*. 
 
@@ -70,11 +78,13 @@ model=**true**
 *; which belongs to the server which is configured with the option 'cluster=pg', go here*
 ```
 
+## Reserved words
+
 The following two reserved words can't be used as server names or as model names in Barman:
 
 -   **barman**: identifier of the global section
 -   **all**: a shortcut that allows you to execute some commands in sequence on every server managed by Barman
 
-Barman implements the **convention over configuration** design paradigm, which attempts to reduce the number of options that you are required to configure without losing flexibility. Therefore, some server options can be defined at global level and overridden at server level, allowing users to specify a generic behavior and refine it for one or more servers. These options have a global/server scope.
+## Overrides
 
-For a list of all the available configurations and their scope, please refer to [section 5 of the 'man' page](https://docs.pgbarman.org/barman.5.html).
+Barman implements the **convention over configuration** design paradigm, which attempts to reduce the number of options that you are required to configure without losing flexibility. Therefore, some server options can be defined at global level and overridden at server level, allowing users to specify a generic behavior and refine it for one or more servers. These options have a global/server scope.
