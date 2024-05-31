@@ -4,6 +4,7 @@
 ### WAL compression
 
 The `barman cron` command will compress WAL files if the compression option is set in the configuration file. This option allows five values:
+
 |**Value**|**Description**|**Note**|
 |---------|---------------|--------|
 |`bzip2`| Used for Bzip2 compression|Requires the `bzip2` utility|
@@ -130,6 +131,7 @@ Retention policies in Barman can be:
 ### Configuration and syntax
 
 Retention policies can be defined through the following configuration options:
+
 |**Option**|**Description**|
 |----------|---------------|
 |`retention_policy`|For base backup retention|
@@ -149,9 +151,11 @@ Where:
 -   Syntax is case insensitive
 -   Value is an integer and is \> 0
 
-**redundancy retention policy**: 'value` must be greater than or equal to the server minimum redundancy level.  If that value is not assigned, a warning is generated. The first valid backup is the value of the backup in a reverse-ordered time series.
+**redundancy retention policy**
+- `value` must be greater than or equal to the server minimum redundancy level.  If that value isn't assigned, a warning is generated. The first valid backup is the value of the backup in a reverse-ordered time series.
 
-**recovery window policy**:  The point of recoverability is: current time - window - the first valid backup is the first available backup before the point of recoverability. Its value in a reverse-ordered time series must be greater than or equal to the server minimum redundancy level.  If it isn't assigned to that value, a warning is generated.
+**recovery window policy**
+- The point of recoverability is: *(current time - window - the first valid backup is the first available backup before the point of recoverability)*. Its value in a reverse-ordered time series must be greater than or equal to the server minimum redundancy level.  If it isn't assigned to that value, a warning is generated.
 
 By default, `retention_policy` is empty *(no retention enforced)*.
 
@@ -166,6 +170,8 @@ Before proceeding, ensure you've properly configured PostgreSQL on **pg** to acc
 -   [Role attributes](https://www.postgresql.org/docs/current/static/role-attributes.html)
 -   [The pg_hba.conf file](https://www.postgresql.org/docs/current/static/auth-pg-hba-conf.html)
 -   [Setting up standby servers using streaming replication](https://www.postgresql.org/docs/current/static/protocol-replication.html)
+
+Use the following steps to set it up:
 
 1. Configure the `wal_level` parameter to ensure that all the useful information necessary for a backup to be coherent are included in the transaction log file:
 ```bash
