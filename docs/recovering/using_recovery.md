@@ -10,7 +10,7 @@ Barman offers a variety of recovery methods, including remote recovery, point in
 barman@backup\$ barman recover \<server_name\> \<backup_id\> /path/to/recover/dir
 ```
 !!!note
-    Running this command as user **barman**, will make it become the database superuser.
+    Running this command as user **barman** will make it become the database superuser.
 
 ## Requirements
 
@@ -28,7 +28,7 @@ At the end of the execution of the recovery, the selected backup is recovered lo
 At the end of the execution of the recovery, the selected backup is recovered locally and the destination path contains a data directory ready to be used to start a PostgreSQL instance.
 
 !!!Important
-    Barman does not currently keep track of symbolic links inside PGDATA (except for tablespaces inside pg_tblspc). It's recommended that system administrators to keep track of symbolic links and to add them to the disaster recovery plans/procedures in case they need to be restored in their original location.
+    Barman doesn't keep track of symbolic links inside `PGDATA` (except for tablespaces inside `pg_tblspc`). It's recommended that system administrators to keep track of symbolic links and to add them to the disaster recovery procedures in case they need to be restored in their original location.
 
 ## Remote recovery
 
@@ -36,9 +36,6 @@ Add the `--remote-ssh-command \<COMMAND\>` option to the invocation of the recov
 
 !!!NOTE
     It is advisable to use the **postgres** user to perform the recovery on the remote host.
-
-!!!warning
-    Do not issue a recover command using a target data directory where a PostgreSQL instance is running. In that case, remember to stop it before issuing the recovery. This applies also to tablespace directories.
 
 ### Limitations of the remote recovery
 
@@ -65,6 +62,8 @@ Barman wraps PostgreSQL's Point-in-Time Recovery (PITR), allowing you to specify
 !!!Important
     The earliest PITR for a given backup is the end of the base backup itself. If you want to recover at any point in time between the start and the end of a backup, you must use the previous backup. From Barman 2.3 you can exit recovery when consistency is reached by using `--target-immediate option`.
 
+### Recovery target options
+
 The recovery target can be specified using one of the following mutually exclusive options:
 
 -   `\--target-time TARGET_TIME`: to specify a timestamp
@@ -74,11 +73,22 @@ The recovery target can be specified using one of the following mutually exclusi
 -   `\--target-immediate`: recovery ends when a consistent state is reached (that is the end of the base backup process)
 
 !!!Important
-    Recovery target via *time*, *XID* and LSN **must be** subsequent to the end of the backup. If you want to recover to a point in time between the start and the end of a backup, you must recover from the previous backup in the catalogue.
+    Recovery target via *time*, *XID* and LSN **must be** subsequent to the end of the backup. If you want to recover to a point in time between the start and the end of a backup, you must recover from the previous backup in the catalog.
 
 You can use the `--exclusive` option to specify whether to stop immediately before or immediately after the recovery target.
 
-Barman allows you to specify a target timeline for recovery using the `--target-tli` option. This can be set to a numeric timeline ID or one of the special values latest (to recover to the most recent timeline in the WAL archive) and current (to recover to the timeline which was current when the backup was taken). If this option is omitted then PostgreSQL versions 12 and above will recover to the latest timeline and PostgreSQL versions below 12 will recover to the current timeline. For more information about timelines, see the PostgreSQL documentation.
+### Target timeline option
+
+Barman allows you to specify a target timeline for recovery using the `--target-tli` option. This can be set to a numeric timeline ID or one of the special values latest (to recover to the most recent timeline in the WAL archive) and current (to recover to the timeline which was current when the backup was taken). 
+
+If the the `--target-tli` option is omitted, the following takes place:
+
+- PostgreSQL version 12 and higher will recover to the latest timeline.
+- PostgreSQL version 11 and lower will recover to the current timeline. 
+
+For more information about timelines, see the PostgreSQL documentation.
+
+### Target action option
 
 Barman 2.4 added support for `--target-action` option, accepting the following values:
 
@@ -91,15 +101,21 @@ Barman 2.4 added support for `--target-action` option, accepting the following v
 
 For more information on the above settings, see the [PostgreSQL documentation on recovery target settings](https://www.postgresql.org/docs/current/static/runtime-config-wal.html#RUNTIME-CONFIG-WAL-RECOVERY-TARGET).
 
+### Standby mode option
+
 Barman 2.4 also adds the `--standby-mode` option for the recover command which, if specified, properly configures the recovered instance as a standby by creating a `standby.signal` file (from PostgreSQL versions lower than 12), or by adding `standby_mode = on` to the generated recovery configuration.
 
-More information on Postgresql *standby mode* is available in the official documentation:
+For more information on PostgreSQL standby mode, see the official documentation:
 
 -   For Postgres 11 and lower versions [in the standby section of PostgreSQL documentation](https://www.postgresql.org/docs/11/standby-settings.html).
 -   For PostgreSQL 12 and greater versions [in the replication section of PostgreSQL documentation](https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY).
 
 !!!Important
-    When `--standby-mode` is used during recovery is necessary for the user to modify the configuration of the recovered instance, allowing the recovered server to connect to the primary once the WAL files replication from Barman is successfully completed. If the recovered instance version is 11 or lower this is achieved by adding the `primary_conninfo` parameter to the `recovery.conf` file. If the recovered instance version is 12 or greater, the `primary_conninfo` parameter needs to be added to the `postgresql.conf` file.
+    When `--standby-mode` is used during recovery it's necessary to modify the configuration of the recovered instance, allowing the recovered server to connect to the primary once the WAL file replication from Barman is successfully completed. 
+    
+    If the recovered instance is PostgreSQL version 11 or lower, this is achieved by adding the `primary_conninfo` parameter to the `recovery.conf` file. 
+    
+    If the recovered instance is PostgreSQL version 12 or greater, the `primary_conninfo` parameter needs to be added to the `postgresql.conf` file.
 
 ## Fetching WALs from the Barman server
 
@@ -116,6 +132,11 @@ If a backup has been compressed using the `backup_compression` option then barma
 3.  Config files which need special handling by Barman are copied from the recovery destination, analysed or edited as required, and copied back to the recovery destination using Rsync.
 4.  The staging directory for the backup is removed.
 
-Because Barman does not know anything about the environment in which it will be deployed it relies on the `recovery_staging_path` option in order to choose a suitable location for the staging directory.
+Barman doesn't know anything about the environment in which it will be deployed, so it relies on the `recovery_staging_path` option in order to choose a suitable location for the staging directory.
 
-If you are using the `backup_compression` option you *must* therefore either set `recovery_staging_path` in the global/server config *or* use the `--recovery-staging-path` option with the `barman recover` command. If you do neither of these things and attempt to recover a compressed backup then Barman will fail rather than try to guess a suitable location.
+If you're using the `backup_compression` option you must do one of the following:
+
+- Set `recovery_staging_path` in the global/server config.
+- Use the `--recovery-staging-path` option with the `barman recover` command. 
+
+If you do neither of these things and attempt to recover a compressed backup, Barman will fail rather than try to guess a suitable location.
