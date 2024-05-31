@@ -1,13 +1,23 @@
-The most critical requirement for a Barman server is the amount of disk space available. 
+# Requirements
+
+## Disk space
+
+The most **critical** requirement for a Barman server is the amount of disk space available. 
 
 !!!tip
     It's recommended that you plan the required disk space based on:
-    - The size of the cluster
-    - Number of WAL files generated per day
-    - Frequency of backups
-    - Backup retention policies
+- The size of the cluster
+- Number of WAL files generated per day
+- Frequency of backups
+- Backup retention policies
 
-Barman developers regularly test Barman with **XFS** and **ext4**. Like [PostgreSQL](https://www.postgresql.org/docs/current/creating-cluster.html#CREATING-CLUSTER-FILESYSTEM), Barman does nothing special for NFS. 
+## Filesystem
+
+Barman developers regularly test Barman with **XFS** and **ext4**. 
+
+### Using with NFS
+
+Like [PostgreSQL](https://www.postgresql.org/docs/current/creating-cluster.html#CREATING-CLUSTER-FILESYSTEM), Barman does nothing special for NFS. 
 
 The following requirements apply for safely using Barman with NFS:
 
