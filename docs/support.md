@@ -1,5 +1,5 @@
 
-#  Getting Support
+# Support
 Barman is free software, written and maintained by [EnterpriseDB](https://www.enterprisedb.com/).  
 
 You can obtain professional support, community support, and submit bug reports for Barman.
@@ -25,7 +25,7 @@ To submit a bug report, use the following procedure:
 !!!warning
     Before submitting the output of the `barman diagnose` command, review the output to ensure it doesn't contain sensitive information.
 
-# FAQs and articles
+## FAQs and articles
 
 You can read the Barman FAQs and external blog articles here:
 

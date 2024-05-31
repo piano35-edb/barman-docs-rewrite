@@ -7,12 +7,15 @@ In a perfect world, there would be no need for a backup. In the real world, espe
 -   Human error
 -   Natural disaster
 
+## Business continuity
+
 A DBA should be able to recover from any of these unexpected events, and restore the database in the shortest time possible. We normally refer to this discipline as *disaster recovery*, and more broadly *business continuity*.
 
 Within business continuity, it is important to familiarise yourself with two fundamental metrics, as defined by Wikipedia:
 
--   [**Recovery Point Objective (RPO)**](https://en.wikipedia.org/wiki/Recovery_point_objective): *"maximum targeted period in which data might be lost from an IT service due to a major incident"*
--   [**Recovery Time Objective (RTO)**](https://en.wikipedia.org/wiki/Recovery_time_objective): *"the targeted duration of time and a service level within which a business process must be restored after a disaster (or disruption) in order to avoid unacceptable consequences associated with a break in business continuity"*
+-   [**Recovery Point Objective (RPO)**](https://en.wikipedia.org/wiki/Recovery_point_objective): The maximum targeted period in which data might be lost from an IT service due to a major incident.
+
+-   [**Recovery Time Objective (RTO)**](https://en.wikipedia.org/wiki/Recovery_time_objective): The targeted duration of time and a service level within which a business process must be restored after a disaster (or disruption) in order to avoid unacceptable consequences associated with a break in business continuity.
 
 In more simplistic terms, RPO represents the maximum amount of data you can afford to lose, while RTO represents the maximum downtime that you can afford for your service.
 
@@ -22,7 +25,7 @@ Fortunately, with an open source stack composed of **Barman** and **PostgreSQL**
 
 Based on our experience at [EnterpriseDB](https://www.enterprisedb.com/), we can confirm that PostgreSQL open source clusters with **Barman** and **repmgr** can easily achieve more than 99.99% uptime over a year, if properly configured and monitored.
 
-# Mission
+## Mission
 Our mission with Barman is to promote a culture of disaster recovery that:
 
 -   Focuses on backup and recovery procedures.
@@ -32,7 +35,7 @@ Our mission with Barman is to promote a culture of disaster recovery that:
 -   Solicits regularly scheduled drills and disaster recovery simulations.
 -   Relies on continuous monitoring of PostgreSQL and Barman to promptly identify any anomalies.
 
-# Be prepared
+## Be prepared
 It's important to prepare yourself and your team for when unexpected events happen *(yes, *when*, not *if*)*, because, in the experiences of many:
 
 -   It's going to be on a Friday evening, most likely right when you're about to leave the office.
