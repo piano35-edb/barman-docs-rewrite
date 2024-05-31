@@ -31,6 +31,7 @@ barman receive-wal --stop SERVER_NAME
 !!!tip
     Use `barman list-servers` to ensure you cover all of your servers.
 
-# man1
+## Additional options
+
 `--keep-descriptors`
 Keep the stdout and the stderr streams of the Barman subprocesses attached to this one. This is useful for Docker based installations.

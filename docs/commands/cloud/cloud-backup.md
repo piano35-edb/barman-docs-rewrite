@@ -5,7 +5,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-backup`|Cloud|Perform a backup of a local PostgreSQL instance and ship the resulting tarball(s) to the cloud.|`barman-cloud-backup [*OPTIONS*] *DESTINATION_URL* *SERVER_NAME*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-backup` is supported for the following cloud providers:
 
@@ -13,18 +13,18 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Requirements and limitations
+## Requirements and limitations
 
 The following requirements and limitations apply to the `barman-cloud-backup` command:
 
 - It requires read access to *PGDATA* and tablespaces *(normally run as postgres user)*. 
-- It can also be used as a hook script on a barman server, in which case it requires read access to the directory where barman backups are stored.
+- It can also be used as a hook script on a Barman server, in which case it requires read access to the directory where Barman backups are stored.
 - If the arguments prefixed with `--snapshot-` are used, and snapshots are supported for the selected cloud provider, then the backup will be performed using snapshots of the disks specified using `--snapshot-disk arguments`. The backup label and backup metadata will be uploaded to the cloud object store.
 
 !!!warning
     The cloud upload process may fail if any file with a size greater than the configured `--max-archive-size` is present either in the data directory or in any tablespaces. However, PostgreSQL creates files with a maximum size of 1GB, and that size is always allowed, regardless of the `max-archive-size` parameter.
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-backup [-V] [--help] [-v \| -q] [-t]
@@ -52,7 +52,7 @@ barman-cloud-backup [-V] [--help] [-v \| -q] [-t]
 [--azure-resource-group AZURE_RESOURCE_GROUP]
 ```
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `cloud-backup` command:
 
@@ -62,7 +62,7 @@ The following positional arguments can be used with the `cloud-backup` command:
 |`destination_url server_name`| | | |
 |`server_name`|The name of the server as configured in Barman| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-backup` command:
 
@@ -92,10 +92,10 @@ The following optional arguments can be used with the `cloud-backup` command:
 |`\--snapshot-zone GCP_ZONE`| Zone of the disks from which snapshots should be taken *(deprecated: replaced by `--gcp-zone`)*| | |
 |`\--tags [TAGS [TAGS ...]]`|Tags to be added to all uploaded files in cloud storage| | |
 
-# Extra options 
+## Extra options 
 The following extra options can be used with the `cloud-backup` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-backup` command for **aws-s3**:
 
@@ -109,7 +109,7 @@ The following extra options can be used with the `cloud-backup` command for **aw
 |`\--sse-kms-key-id SSE_KMS_KEY_ID`|The AWS KMS key ID that should be used for encrypting the uploaded data in S3. Can be specified using the key ID on its own or using the full ARN for the key. Only allowed if `\`-e/--encryption\` is set to \`aws:kms\`.| | |
 |`\--aws-region AWS_REGION`|The name of the AWS region containing the EC2 VM and storage volumes defined by the `--snapshot-instance` and `--snapshot-disk` arguments.| | |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-backup` command for **azure-blob-storage**:
 
@@ -120,7 +120,7 @@ The following extra options can be used with the `cloud-backup` command for **az
 |`\--azure-subscription-id AZURE_SUBSCRIPTION_ID`|The ID of the Azure subscription which owns the instance and storage volumes defined by the `\--snapshot-instance` and `--snapshot-disk` arguments.| | |
 |`\--azure-resource-group AZURE_RESOURCE_GROUP`|The name of the Azure resource group to which the compute instance and disks defined by the `--snapshot-instance` and `--snapshot-disk` arguments belong.| | |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 The following extra options can be used with the `cloud-backup` command for **google-cloud-storage**:
 
@@ -132,7 +132,7 @@ The following extra options can be used with the `cloud-backup` command for **go
 |`\--gcp-zone GCP_ZONE`|Zone of the disks from which snapshots should be taken| | |
 
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-backup` command:
 
@@ -143,7 +143,7 @@ The following dependencies apply to the `cloud-backup` command:
 |google-cloud-storage|\* google-cloud-storage|
 |google-cloud-storage *(with snapshot backups)*|grpcio, google-cloud-compute|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|
@@ -153,14 +153,11 @@ The following dependencies apply to the `cloud-backup` command:
 |3|There was an error in the command input             |
 |Other non-zero code|Failure      |
 
+## Additional information
 
-
-# Additional information
-
-This script can be used in conjunction with **post_backup_script** or **post_backup_retry_script** to relay barman backups to cloud storage as follows:
-
+This script can be used in conjunction with a **post_backup_script** or **post_backup_retry_script** to relay barman backups to cloud storage as follows:
 ```bash
 post_backup_retry_script = 'barman-cloud-backup [\*OPTIONS\*] \*DESTINATION_URL\* \${BARMAN_SERVER}'
 ```
-When running as a hook script, `barman-cloud-backup` will read the location of the backup directory and the backup ID from **BACKUP_DIR** and **BACKUP_ID** environment variables set by barman.
+When running as a hook script, `barman-cloud-backup` will read the location of the backup directory and the backup ID from `BACKUP_DIR` and `BACKUP_ID` environment variables set by barman.
 

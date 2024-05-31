@@ -48,11 +48,11 @@ If you want to use `barman-cloud-backup` and/or `barman-cloud-wal-archive` as ho
 
 See the Barman "Installation" section to install the repositories.
 
-To install the package on RedHat/CentOS system, as root type:
+RedHat/CentOS:  (as root)
 ```bash
 yum install barman-cli-cloud
 ```
-On Debian/Ubuntu, as root user type:
+Debian/Ubuntu:  (as root)
 ```bash
 apt-get install barman-cli-cloud
 ```
@@ -65,17 +65,17 @@ All commands should be prefaced with `barman-cloud-`.  For example `barman-cloud
 The following list includes the cloud commands.
 
 
-|**Command** | **Category** |  **Description**| **Link**|
-|------------|--------------|-----------------|----------|
-|`cloud-backup`|Cloud|Perform a backup of a local PostgreSQL instance and ship the resulting tarball(s) to the cloud.|       |
-|`cloud-backup-delete`|Cloud|Delete backups previously made with the `barman-cloud-backup` command.|       |
-|`cloud-backup-keep`|Cloud|Flag backups previously made with `barman-cloud-backup` as archival backups.|       |
-|`cloud-backup-list`|Cloud|List backups previously made with `barman-cloud-backup` command.|       |
-|`cloud-backup-show`|Cloud|Display metadata for backups previously made with the `barman-cloud-backup` command.|       |
-|`cloud-check-wal-archive`|Cloud|Check that the WAL archive destination for *SERVER_NAME* is safe to use for a new PostgreSQL cluster.|       |
-|`cloud-wal-archive`|Cloud|Used with the `archive` command of a PostgreSQL server to ship WAL files to the Cloud.|       |
-|`cloud-wal-restore`|Cloud|Used as a `restore` command to download WAL files previously archived with `barman-cloud-wal-archive` command.|       |
-|`cloud-restore`| Cloud|Download a backup previously made with `barman-cloud-backup command`.|       |
+|**Command** | **Category** |  **Description**|
+|------------|--------------|-----------------|
+|`cloud-backup`|Cloud|Perform a backup of a local PostgreSQL instance and ship the resulting tarball(s) to the cloud.|      
+|`cloud-backup-delete`|Cloud|Delete backups previously made with the `barman-cloud-backup` command.|      
+|`cloud-backup-keep`|Cloud|Flag backups previously made with `barman-cloud-backup` as archival backups.|       
+|`cloud-backup-list`|Cloud|List backups previously made with `barman-cloud-backup` command.|       
+|`cloud-backup-show`|Cloud|Display metadata for backups previously made with the `barman-cloud-backup` command.|       
+|`cloud-check-wal-archive`|Cloud|Check that the WAL archive destination for *SERVER_NAME* is safe to use for a new PostgreSQL cluster.|       
+|`cloud-wal-archive`|Cloud|Used with the `archive` command of a PostgreSQL server to ship WAL files to the Cloud.|       
+|`cloud-wal-restore`|Cloud|Used as a `restore` command to download WAL files previously archived with `barman-cloud-wal-archive` command.|       
+|`cloud-restore`| Cloud|Download a backup previously made with `barman-cloud-backup command`.|       
 
 ## References
 For more information on configuring your environment, see the following references:
