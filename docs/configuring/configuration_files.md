@@ -5,12 +5,12 @@ Barman has the following three types of configuration files:
 |**File type**|**Location**|**Notes**|
 |------------|------------|---------|
 |Global / General / Main|`/etc/barman.conf` or `/etc/barman/barman.conf`|Contains general options such as main directory, system user, log file, and so on.|
-|Server|`/etc/barman.d`|Must have a *.conf* suffix.  There is a configuration file for each server that gets backed up by Barman.|
-|Model|`/etc/barman.d`|Must have a *.conf suffix*.|
+|Server|`/etc/barman.d`|Must have a *.conf* suffix.  There's a configuration file for each server that gets backed up by Barman.|
+|Model|`/etc/barman.d`|Must have a *.conf* suffix.|
 
-The configuration file location can be overridden on a per-user level by `$HOME/.barman.conf`.
-
-Configuration files follow the *INI* format.  Rows starting with `;` are comments.
+- The configuration file location can be overridden on a per-user level by `$HOME/.barman.conf`.
+- Configuration files follow the **INI** format.  
+- Rows starting with `;` are comments.
 
 !!!note
       Models define a set of configuration overrides which can be applied on top of the configuration of Barman servers that are part of the same cluster as the model, through the `barman config-switch` command.
@@ -87,4 +87,4 @@ The following two reserved words can't be used as server names or as model names
 
 ## Overrides
 
-Barman implements the **convention over configuration** design paradigm, which attempts to reduce the number of options that you are required to configure without losing flexibility. Therefore, some server options can be defined at global level and overridden at server level, allowing users to specify a generic behavior and refine it for one or more servers. These options have a global/server scope.
+Barman implements the **convention over configuration** design paradigm, which attempts to reduce the number of options that you're required to configure, without losing flexibility. Some server options can be defined at global level and overridden at server level, allowing you to specify a generic behavior and refine it for one or more servers. These options have a global/server scope.

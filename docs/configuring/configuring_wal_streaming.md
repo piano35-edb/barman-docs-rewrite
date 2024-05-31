@@ -5,7 +5,7 @@ Barman relies on [pg_receivewal](https://www.postgresql.org/docs/current/static/
 !!!note
     Prior to PostgreSQL 10, `pg_receivewal` was named `pg_receivexlog`.
 
-!!!IMPORTANT
+!!!important
     Barman requires that `pg_receivewal` is installed on the same server. It's recommended to install the latest available version of `pg_receivewal`, as it is back compatible. Otherwise, users can install multiple versions of `pg_receivewal` on the Barman server and properly point to the specific version for a server, using the `path_prefix` option in the configuration file.
 
 ## Enable transaction log streaming
@@ -15,14 +15,14 @@ To enable streaming of transaction logs:
 1.  Set up a streaming connection.
 2.  Set the `streaming_archiver` option to `on`.
 
-!!!recommendation
+!!!tip
     The `cron` command transparently manages log streaming through the execution of the `receive-wal` command. This is the recommended scenario.
 
 Alternatively, you can manually execute the `receive-wal` command:
 ```bash
 barman receive-wal \<server_name\>
 ```
-!!!NOTE
+!!!info
     The `receive-wal` command is a foreground process.
 
 Transaction logs are streamed directly in the directory specified by the `streaming_wals_directory` configuration option. They are then archived by the `archive-wal` command.
@@ -85,7 +85,7 @@ The following restrictions apply and are enforced by Barman during checks:
     -   Both the `pg_read_all_settings` and `pg_read_all_stats roles`.
     -   The `superuser` role.
 
-!!!recommendation
+!!!tip
     While it is possible to stream WALs from any PostgreSQL instance in a cluster, there's a risk that WAL segments can be lost when streaming WALs from a standby, if the standby is unable to keep up with its own upstream source. It's recommended that WALs are always streamed directly from the primary.
 
 ### Limitations of partial WAL files with recovery
@@ -121,7 +121,7 @@ Using `barman-wal-archive` instead of rsync/SSH reduces the risk of data corrupt
 
 For this reason, we have developed the `barman-wal-archive` utility that natively communicates with Barman's `put-wal` command *(introduced in Barman version 2.6)*, which is responsible for receiving the file, fsync'ing its content, and placing it in the proper incoming directory for that server.  This reduces the risk of copying a WAL file in the wrong location or directory in Barman, as the only parameter to be used in the `archive_command` is the server ID.
 
-!!!tip
+!!!info
     For more information on the `barman-wal-archive` command, type `man barman-wal-archive`on the PostgreSQL server.
 
 To verify that `barman-wal-archive` can connect to the Barman server, and that the required PostgreSQL server is configured in Barman to accept incoming WAL files, use the following command:
