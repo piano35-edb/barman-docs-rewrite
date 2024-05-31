@@ -1,6 +1,6 @@
 # Configuration examples
 
-The following examples show various type of configuration files:
+The following examples show various types of configuration files:
 
 Example: A main configuration file:
 ```bash
@@ -47,10 +47,9 @@ archiver = **on**
 ```
 !!!tip
     For more information, refer to the the following files:
-
-- `distributed barman.conf`
-- `ssh-server.conf-template`
-- `streaming-server.conf-template`
+    - `distributed barman.conf`
+    - `ssh-server.conf-template`
+    - `streaming-server.conf-template`
 
 # Example configuration file
 
