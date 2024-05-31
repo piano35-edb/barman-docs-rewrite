@@ -76,7 +76,7 @@ Run the following command as the **barman** user on the **backup** host to verif
 ```bash
 barman@backup\$ psql -c 'SELECT version()' -U barman -h pg postgres
 ```
-Save the output *(user name, host name and database name)* to use within the `conninfooption` for your server configuration.  
+Save the output *(user name, host name and database name)* to use within the `conninfo` option for your server configuration.  
 
 For example:
 ```bash

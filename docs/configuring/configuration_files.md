@@ -18,11 +18,11 @@ Configuration files follow the *INI* format.  Rows starting with `;` are comment
     For historical reasons, you can still have one single configuration file containing both global as well as server and model options. However, for maintenance reasons, this approach is deprecated.
 
 
-# Configuration file directory
+## Configuration file directory
 
 Barman supports the inclusion of multiple configuration files, through the `configuration_files_directory` option. Included files must contain only server specifications, not global configurations. If the value of `configuration_files_directory` is a directory, Barman reads all files with `.conf` extension that exist in that folder. For example, if you set it to `/etc/barman.d`, you can specify your PostgreSQL servers placing each section in a separate `.conf` file inside the `/etc/barman.d` folder.
 
-# Configuration file parameters
+## Configuration file parameters
 
 Configuration files accept distinct types of parameters:
 
@@ -36,7 +36,7 @@ Parameters don't need to be quoted.
 !!!note
     Some *enum* allows *off* but not *false*.
 
-# Configuration file options scope
+## Configuration file options scope
 
 Every configuration option has a *scope*:
 
@@ -45,7 +45,7 @@ Every configuration option has a *scope*:
 -   model
 -   global/server: server options that can be generally set at global level
 
-## Global
+### Global
 
 Global options are allowed in the *general section*, which is identified in the INI file by the *[barman]* label:
 
@@ -54,7 +54,7 @@ Global options are allowed in the *general section*, which is identified in the 
 *; ... global and global/server options go here*
 ```
 
-## Server
+### Server
 
 Server options can only be specified in a *server section*, which is identified by a line in the configuration file, in square brackets (`[` and `]`). The server section represents the ID of that server in Barman. 
 
@@ -65,7 +65,7 @@ cluster=my-cluster
 *; Configuration options for the server named 'pg' go here*
 ```
 
-## Model
+### Model
 
 Model options can only be specified in a *model section*, which is identified the same way as a *server section*. There can't be any conflicts among the identifier of *server sections* and *model sections*. 
 
