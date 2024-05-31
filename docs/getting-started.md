@@ -19,12 +19,13 @@ After you have a solid understanding of those concepts, you can use the followin
 3. Choose a backup method.
 4. Install Barman on your servers.
 5. Install the `barman-cli` package to use Barman commands.
-6. (Optional) If your architecture includes a cloud provider, install `barman-cli-cloud` package to use Barman's cloud commands. 
+6. (Optional) If your architecture includes a cloud provider, install the `barman-cli-cloud` package to use Barman's cloud commands. 
 7. Configure your backups.
 8. Test your backup and recovery strategy.
 9. Implement monitoring for Barman.
 10. Customize your Barman configuration.
 11. Document your Barman configuration, backup, and recovery procedures.
-12. (Optional) Contribute to Barman.
+12. Implement a strategy for ongoing backup and recovery testing.
+13. (Optional) Contribute to Barman.
 
 
