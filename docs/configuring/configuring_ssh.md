@@ -7,9 +7,9 @@ SSH key exchange is a common practice used to implement secure passwordless conn
 !!!note
     This procedure isn't needed if you plan to use the streaming connection only to archive transaction logs and backup your PostgreSQL server.
 
-# Configuring
+## Configuring
 
-## SSH configuration of the **postgres** user
+### SSH configuration of the **postgres** user
 
 To create an SSH key for the PostgreSQL user, log into the **pg** host as **postgres** and run the following command:
 
@@ -18,7 +18,7 @@ postgres@pg\$ ssh-keygen -t rsa
 ```
 This key must be used to connect from hosts without providing a password, so don't enter a passphrase when creating the key pair.
 
-## SSH configuration of the **barman** user
+### SSH configuration of the **barman** user
 
 To create an SSH key for the Barman user, log into the backup host as **barman** and run the following command:
 ```bash
@@ -26,7 +26,7 @@ barman@backup\$ ssh-keygen -t rsa
 ```
 This key must be used to connect from hosts without providing a password, so don't enter a passphrase when creating the key pair.
 
-## Connectivity from PostgreSQL to Barman
+### Connectivity from PostgreSQL to Barman
 
 The SSH connection from the PostgreSQL server to the backup server is required to correctly archive WAL files using the `archive_command` setting.
 
@@ -41,7 +41,7 @@ The following command should succeed without any output if the SSH key pair exch
 postgres@pg\$ ssh barman@backup -C true
 ```
 
-## Connectivity from Barman to PostgreSQL
+### Connectivity from Barman to PostgreSQL
 
 The SSH connection between the backup server and the PostgreSQL server is used for traditional backup over rsync. Just as with the connection from the PostgreSQL server to the backup server, authorize the public key of the backup server in the PostgreSQL server for the **postgres** user.
 
