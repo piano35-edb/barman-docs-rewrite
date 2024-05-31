@@ -41,14 +41,14 @@ Add the `--remote-ssh-command \<COMMAND\>` option to the invocation of the recov
 
 Remote recovery has the following limitations:
 
--   Barman requires at least 4GB of free space in the system temporary directory unless the `get-wal' command is specified in the `recovery_option` parameter in the Barman configuration.
+-   Barman requires at least 4GB of free space in the system temporary directory unless the `get-wal` command is specified in the `recovery_option` parameter in the Barman configuration.
 -   The SSH connection between Barman and the remote host **must** use the public key exchange authentication method.
 -   The remote user **must** be able to create the directory structure of the backup in the destination directory.
 -   There must be enough free space on the remote server to contain the base backup and the WAL files needed for recovery.
 
 ## Tablespace remapping
 
-Barman is able to automatically remap one or more tablespaces using the recover command with the `--tablespace` option. The option accepts a pair of values as arguments using the `NAME:DIRECTORY` format:
+Barman is able to automatically remap one or more tablespaces using the recover command with the `--tablespace` option. The option accepts a pair of values as arguments using the `NAME:DIRECTORY` format.
 
 -   `NAME` is the identifier of the tablespace
 -   `DIRECTORY` is the new destination path for the tablespace
@@ -57,7 +57,7 @@ If the destination directory does not exists, Barman will try to create it (assu
 
 ## Point in time recovery
 
-Barman wraps PostgreSQL's Point-in-Time Recovery (PITR), allowing you to specify a recovery target, either as a timestamp, as a restore label, or as a transaction ID.
+Barman wraps PostgreSQL's Point-in-Time Recovery (PITR), allowing you to specify a recovery target, either as a timestamp, a restore label, or a transaction ID.
 
 !!!Important
     The earliest PITR for a given backup is the end of the base backup itself. If you want to recover at any point in time between the start and the end of a backup, you must use the previous backup. From Barman 2.3 you can exit recovery when consistency is reached by using `--target-immediate option`.
@@ -90,7 +90,7 @@ For more information about timelines, see the PostgreSQL documentation.
 
 ### Target action option
 
-Barman 2.4 added support for `--target-action` option, accepting the following values:
+Barman 2.4 added support for `--target-action` option.  It accepts the following values:
 
 -  `shutdown`: once recovery target is reached, PostgreSQL is shut down
 -  `pause`: once recovery target is reached, PostgreSQL is started in pause state, allowing users to inspect the instance
@@ -111,7 +111,7 @@ For more information on PostgreSQL standby mode, see the official documentation:
 -   For PostgreSQL 12 and greater versions [in the replication section of PostgreSQL documentation](https://www.postgresql.org/docs/current/runtime-config-replication.html#RUNTIME-CONFIG-REPLICATION-STANDBY).
 
 !!!Important
-    When `--standby-mode` is used during recovery it's necessary to modify the configuration of the recovered instance, allowing the recovered server to connect to the primary once the WAL file replication from Barman is successfully completed. 
+    When `--standby-mode` is used during recovery, it's necessary to modify the configuration of the recovered instance, allowing the recovered server to connect to the primary once the WAL file replication from Barman is successfully completed. 
     
     If the recovered instance is PostgreSQL version 11 or lower, this is achieved by adding the `primary_conninfo` parameter to the `recovery.conf` file. 
     
@@ -121,15 +121,15 @@ For more information on PostgreSQL standby mode, see the official documentation:
 
 The `barman recover` command can optionally configure PostgreSQL to fetch WALs from Barman during recovery. This is enabled by setting the `recovery_options` global/server configuration option to `get-wal`. If `recovery_options` is not set or is empty then Barman will instead copy the WALs required for recovery while executing the `barman recover` command.
 
-The `--get-wal` and `--no-get-wal` options can be used to override the behaviour defined by recovery_options. Use `--get-wal` with barman recover to enable the fetching of WALs from the Barman server.  Use `--no-get-wal` to disable it.
+The `--get-wal` and `--no-get-wal` options can be used to override the behaviour defined by recovery_options. Use `--get-wal` with `barman recover` to enable the fetching of WALs from the Barman server.  Use `--no-get-wal` to disable it.
 
 ## Recovering compressed backups
 
 If a backup has been compressed using the `backup_compression` option then barman recover is able to uncompress the backup on recovery. This is a multi-step process:
 
-1.  The compressed backup files are copied to a staging directory on the local or remote server using Rsync.
+1.  The compressed backup files are copied to a staging directory on the local or remote server using rsync.
 2.  The compressed files are uncompressed to the target directory.
-3.  Config files which need special handling by Barman are copied from the recovery destination, analysed or edited as required, and copied back to the recovery destination using Rsync.
+3.  Config files which need special handling by Barman are copied from the recovery destination, analyzed or edited as required, and copied back to the recovery destination using rsync.
 4.  The staging directory for the backup is removed.
 
 Barman doesn't know anything about the environment in which it will be deployed, so it relies on the `recovery_staging_path` option in order to choose a suitable location for the staging directory.
@@ -139,4 +139,5 @@ If you're using the `backup_compression` option you must do one of the following
 - Set `recovery_staging_path` in the global/server config.
 - Use the `--recovery-staging-path` option with the `barman recover` command. 
 
-If you do neither of these things and attempt to recover a compressed backup, Barman will fail rather than try to guess a suitable location.
+!!!warning
+    If you do neither of these things and attempt to recover a compressed backup, Barman will fail rather than try to guess a suitable location.
