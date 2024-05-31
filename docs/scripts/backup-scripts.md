@@ -1,4 +1,6 @@
-Backup scripts can be configured with the following global configuration options (which can be overridden on a per server basis):
+Backup scripts can be configured with the following global configuration options.  You can override them on a per-server basis.
+
+## Scripts
 
 |**Script**|**Description**|
 |----------|---------------|
@@ -8,6 +10,8 @@ Backup scripts can be configured with the following global configuration options
 |`post_backup_script`|Hook script executed after a base backup, only once, with no check on the exit code|
 
 The script definition is passed to a shell and can return any exit code. Only in case of a retry script, Barman checks the return code.
+
+## Variables
 
 The shell environment will contain the following variables:
 

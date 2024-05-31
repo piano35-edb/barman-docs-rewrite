@@ -1,15 +1,19 @@
-Similar to backup scripts, archive scripts can be configured with global configuration options (which can be overridden on a per server basis):
+Similar to backup scripts, archive scripts can be configured with global configuration options.  You can override them on a per-server basis.
+
+## Scripts
 
 |**Script**|**Description**|
 |----------|---------------|
-|`pre_archive_script`|Hook script executed before a WAL file is archived by maintenance (usually barman cron), only once, with no check on the exit code|
-|`pre_archive_retry_script`|Retry hook script executed before a WAL file is archived by maintenance (usually barman cron), repeatedly until it is successful or aborted|
+|`pre_archive_script`|Hook script executed before a WAL file is archived by maintenance (usually `barman cron`), only once, with no check on the exit code|
+|`pre_archive_retry_script`|Retry hook script executed before a WAL file is archived by maintenance (usually `barman cron`), repeatedly until it is successful or aborted|
 |`post_archive_retry_script`|Retry hook script executed after a WAL file is archived by maintenance, repeatedly until it is successful or aborted|
 |`post_archive_script`|Hook script executed after a WAL file is archived by maintenance, only once, with no check on the exit code|
 
 The script is executed through a shell and can return any exit code. Only in case of a retry script, Barman checks the return code.
 
-Archive scripts share with backup scripts some environmental variables:
+## Shared variables
+
+Archive scripts and backup scripts share the following environmental variables:
 
 |**Variable**|**Description**|
 |------------|---------------|
@@ -17,6 +21,8 @@ Archive scripts share with backup scripts some environmental variables:
 |`BARMAN_ERROR`|Error message, if any (only for the post phase)|
 |`BARMAN_PHASE`|Phase of the script, either pre or post|
 |`BARMAN_SERVER`|Name of the server|
+
+## Archive-only variables
 
 The following variables are specific to archive scripts:
 

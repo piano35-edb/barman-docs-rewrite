@@ -1,6 +1,8 @@
 Pre and post recovery scripts are supported for Barman version 2.4 and higher.
 
-As previous scripts, recovery scripts can be configured within global configuration options, and is possible to override them on a per server basis:
+Similar to other scripts, recovery scripts can be configured within global configuration options.  You can override them on a per-server basis.
+
+## Scripts 
 
 |**Script**|**Description**|
 |----------|---------------|
@@ -11,7 +13,9 @@ As previous scripts, recovery scripts can be configured within global configurat
 
 The script is executed through a shell and can return any exit code. Only in case of a retry script, Barman checks the return code.
 
-Recovery scripts uses the same environmental variables of a backup script, plus:
+## Variables
+
+Recovery scripts uses the same environmental variables of a backup script, plus the following:
 
 |**Variable**|**Description**|
 |------------|---------------|

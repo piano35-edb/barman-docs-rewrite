@@ -1,6 +1,8 @@
 Pre and post `wal delete` scripts are supported for Barman version 2.4 and higher.
 
-Similarly to the other hook scripts, `wal delete` scripts can be configured with global configuration options, and is possible to override them on a per server basis:
+Similar to the other hook scripts, `wal delete` scripts can be configured with global configuration options.  You can override them on a per server basis.
+
+## Scripts
 
 |**Script**|**Description**|
 |----------|---------------|
@@ -11,5 +13,6 @@ Similarly to the other hook scripts, `wal delete` scripts can be configured with
 
 The script is executed through a shell and can return any exit code. Only in case of a retry script, Barman checks the return code.
 
-WAL delete scripts use the same environmental variables as WAL archive scripts.
+!!!info
+    WAL delete scripts use the same environmental variables as WAL archive scripts.
 

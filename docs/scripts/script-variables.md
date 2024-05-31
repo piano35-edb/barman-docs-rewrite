@@ -1,7 +1,3 @@
-The script definition is passed to a shell and can return any exit code.
-
-Only in case of retry hook scripts, the exit code of the script is checked by Barman. Output of hook scripts is written in the log file.
-
 Barman scripts can contain the following variables:
 
 |**Variable**|**Description**|**Script type**|
