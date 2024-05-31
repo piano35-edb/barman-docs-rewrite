@@ -169,8 +169,7 @@ In some cases, you might want to add stricter checks to the `archive_command` pr
 archive_command = 'test \$(/bin/hostname --fqdn) = HOSTNAME \\
 && rsync -a %p barman@backup:INCOMING_WALS_DIRECTORY/%f'
 ```
-Where:
-- `HOSTNAME` placeholder should be replaced with the value returned by `hostname --fqdn`. This *trick* is a safeguard in case the server is cloned, and avoids receiving WAL files from recovered PostgreSQL instances.
+The `HOSTNAME` placeholder should be replaced with the value returned by `hostname --fqdn`. This *trick* is a safeguard in case the server is cloned, and avoids receiving WAL files from recovered PostgreSQL instances.
 
 ## Verification of WAL archiving configuration
 

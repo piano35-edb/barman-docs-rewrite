@@ -1,6 +1,12 @@
 # Configuration examples
 
-The following examples show various types of configuration files:
+The following examples show various types of configuration files.
+
+For more information, refer to the the following files:
+
+- `distributed barman.conf`
+- `ssh-server.conf-template`
+- `streaming-server.conf-template`
 
 ## Main configuration file 
 ```bash
@@ -48,11 +54,6 @@ backup_method = rsync
 reuse_backup = link
 archiver = **on**
 ```
-!!!tip
-    For more information, refer to the the following files:
-    - `distributed barman.conf`
-    - `ssh-server.conf-template`
-    - `streaming-server.conf-template`
 
 ## Full configuration file
 
