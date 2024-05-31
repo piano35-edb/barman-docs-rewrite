@@ -152,9 +152,11 @@ Where:
 -   Value is an integer and is \> 0
 
 **redundancy retention policy**
+
 - `value` must be greater than or equal to the server minimum redundancy level.  If that value isn't assigned, a warning is generated. The first valid backup is the value of the backup in a reverse-ordered time series.
 
 **recovery window policy**
+
 - The point of recoverability is: *(current time - window - the first valid backup is the first available backup before the point of recoverability)*. Its value in a reverse-ordered time series must be greater than or equal to the server minimum redundancy level.  If it isn't assigned to that value, a warning is generated.
 
 By default, `retention_policy` is empty *(no retention enforced)*.

@@ -2,7 +2,7 @@ Barman can reduce the Recovery Point Objective (RPO) by allowing users to add co
 
 Barman relies on [pg_receivewal](https://www.postgresql.org/docs/current/static/app-pgreceivewal.html).  It exploits the native streaming replication protocol and continuously receives transaction logs from a PostgreSQL server (master or standby). 
 
-!!!note
+!!!info
     Prior to PostgreSQL 10, `pg_receivewal` was named `pg_receivexlog`.
 
 !!!important
@@ -86,7 +86,7 @@ The following restrictions apply and are enforced by Barman during checks:
     -   The `superuser` role.
 
 !!!tip
-    While it is possible to stream WALs from any PostgreSQL instance in a cluster, there's a risk that WAL segments can be lost when streaming WALs from a standby, if the standby is unable to keep up with its own upstream source. It's recommended that WALs are always streamed directly from the primary.
+    While it's possible to stream WALs from any PostgreSQL instance in a cluster, there's a risk that WAL segments can be lost when streaming WALs from a standby, if the standby is unable to keep up with its own upstream source. It's recommended that WALs are always streamed directly from the primary.
 
 ### Limitations of partial WAL files with recovery
 
@@ -96,7 +96,7 @@ Barman expects a partial file to be in the `streaming_wals_directory` of a serve
 
 In the case of a sudden and unrecoverable failure of the master PostgreSQL server, the `.partial` file that has been streamed to Barman contains very important information that the standard archiver (through PostgreSQL's `archive_command`) has not been able to deliver to Barman.
 
-As of Barman 2.10, the `get-wal` command is able to return the content of the current `.partial` WAL file through the `--partial/-P` option. This is useful in the case of recovery, either full or point in time. If you run a `recover` command with `get-wal` enabled, and without `--standby-mode`, Barman will automatically add the `-P` option to `barman-wal-restore`.  It will then relay that to the remote `get-wal` command in the `restore_command` recovery option.
+As of Barman version 2.10, the `get-wal` command is able to return the content of the current `.partial` WAL file through the `--partial/-P` option. This is useful in the case of recovery, either full or point in time. If you run a `recover` command with `get-wal` enabled, and without `--standby-mode`, Barman will automatically add the `-P` option to `barman-wal-restore`.  It will then relay that to the remote `get-wal` command in the `restore_command` recovery option.
 
 `get-wal` will also search in the incoming directory, in case a WAL file has already been shipped to Barman, but not yet archived.
 
@@ -115,7 +115,7 @@ For more information on how Barman supports this feature, see the "Concurrent Ba
 
 ## WAL archiving via `barman-wal-archive`
 
-For Barman 2.6 and higher versions, the recommended way to safely and reliably archive WAL files to Barman via `archive_command` is to use the `barman-wal-archive` command.  `barman-cli` must be installed on each PostgreSQL server that is part of the Barman cluster.
+For Barman 2.6 and higher versions, the recommended way to safely and reliably archive WAL files to Barman via `archive_command` is to use the `barman-wal-archive` command.  To use commands, `barman-cli` must be installed on each PostgreSQL server that is part of the Barman cluster.
 
 Using `barman-wal-archive` instead of rsync/SSH reduces the risk of data corruption of the shipped WAL file on the Barman server. When using rsync/SSH as `archive_command`, there's no mechanism that guarantees that the content of the file is flushed and fsync-ed to disk on destination.
 
@@ -129,11 +129,13 @@ To verify that `barman-wal-archive` can connect to the Barman server, and that t
 barman-wal-archive --test backup pg DUMMY
 ```
 Where:
+
 - `backup` is the host where Barman is installed.
 - `pg` is the name of the PostgreSQL server as configured in Barman.
 - `DUMMY` is a placeholder (`barman-wal-archive` requires an argument for the WAL file name, which is ignored).
 
-If everything is configured correctly, the following output is returned:
+!!!success
+    If everything is configured correctly, the following output is returned:
 ```bash
 Ready to accept WAL files for the server pg
 ```
