@@ -2,10 +2,10 @@
 
 |**Command** | **Category** |  **Description**| **Synopsis**|
 |------------|--------------|-----------------|----------|
-|`check`|Server|Check the connection to a given server and its configuration|`barman check`|
+|`check`|Server|Check the connection to a given server and its configuration|`barman check-backup SERVER_NAME BACKUP_ID`|
 
 
-# Details
+## Details
 
 You can check the connection to a given server and the configuration coherence.
 
@@ -15,11 +15,8 @@ You can check the connection to a given server and the configuration coherence.
 !!!IMPORTANT
     The `check` command can be considered the most critical feature that Barman implements. It's recommended to integrate it with your alerting and monitoring infrastructure. The `--nagios` option allows you to easily create a plugin for Nagios/Icinga.
 
-# man1
-```bash
-check-backup SERVER_NAME BACKUP_ID
-```
-Make sure that all the required WAL files to check the consistency of a physical backup (that is, from the beginning to the end of the full backup) are correctly archived. This command is automatically invoked by the cron command and at the end of every backup operation.
+
+Makes sure that all the required WAL files to check the consistency of a physical backup (that is, from the beginning to the end of the full backup) are correctly archived. This command is automatically invoked by the `cron` command and at the end of every backup operation.
 ```bash
 check-wal-archive SERVER_NAME
 ```

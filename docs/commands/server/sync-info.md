@@ -10,7 +10,7 @@ barman sync-info [--primary] \<server_name\> [\<last_wal\> [\<last_position\>]]
 ```
 # Details
 
-The `barman sync-info` command is used to collect information regarding the current status of a Barman server that is useful for synchronization purposes.
+Collect information regarding the current status of a Barman server.  This can be useful for synchronization purposes.
 
 The command returns a JSON object containing:
 

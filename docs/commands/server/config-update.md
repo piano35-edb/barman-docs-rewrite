@@ -4,15 +4,15 @@
 |------------|--------------|-----------------|----------|
 |`config-update`|Server|Create or update configuration of servers and models|`barman config-update`|
 
-
-# Details
-
-The `config-update` command is used to create or update configuration of servers and models in Barman.
-
-# Syntax
+## Syntax
 ```bash
 barman config-update <json_changes>
 ```
+
+## Details
+
+The `config-update` command is used to create or update configuration of servers and models in Barman.
+
 `json_changes` should be a JSON string containing an array of documents. 
 
 Each document must contain the following key:
@@ -33,10 +33,10 @@ barman config-update \
   ‘[{“scope”: “server”, “server_name”: “my_server”, “archiver”: “on”, “streaming_archiver”: “off”}]’
   ```
 
-!!!note
+!!!info
     `barman config-update` writes the configuration options to a file named `.barman.auto.conf`, which is created under the `barman_home`. 
     
-    That configuration file takes higher precedence and overrides values coming from the Barman global configuration file (typically `/etc/barman.conf`) and from included files as per `configuration_files_directory` (typically files in `/etc/barman.d`). 
+    That configuration file takes higher precedence and overrides values coming from the Barman global configuration file (typically `/etc/barman.conf`), and from included files as per `configuration_files_directory` (typically files in `/etc/barman.d`). 
     
-!!!important
+!!!warning
     If you decide to manually change configuration options in those files, be aware of the potential impact to the Barman files.

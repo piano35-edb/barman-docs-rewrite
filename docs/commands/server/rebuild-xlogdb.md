@@ -4,6 +4,10 @@
 |------------|--------------|-----------------|----------|
 |`rebuild-xlogdb`|Server|Regenerate the content of the WAL archive|`barman rebuild-xlogdb`|
 
+# Syntax
+```bash
+barman rebuild-xlogdb <server_name>
+```
 
 # Details
 
@@ -11,9 +15,5 @@ At any time, you can regenerate the content of the WAL archive for a specific se
 
 The `xlog.db` file can be rebuilt with the `rebuild-xlogdb` command. This will scan all the archived WAL files and regenerate the metadata for the archive.
 
-# Syntax
-```bash
-barman rebuild-xlogdb <server_name>
-```
 !!!tip
     You can rebuild of WAL file metadata for all servers using `all`.

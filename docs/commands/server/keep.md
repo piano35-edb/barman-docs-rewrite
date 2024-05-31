@@ -4,8 +4,13 @@
 |------------|--------------|-----------------|----------|
 |`keep`|Server|Flag the specified backup as an archival backup|`barman keep \<server_name> \<backup_id>`|
 
+## Syntax
 
-# Details
+```bash
+barman keep \<server_name> \<backup_id>
+```
+
+## Details
 
 `keep` flags the specified backup as an archival backup which should be kept forever, regardless of any retention policies in effect. 
 
@@ -29,4 +34,6 @@ Once a backup has been flagged as an archival backup, the behaviour of Barman wi
 - The WALs required by that backup will be retained forever. If the specified recovery target is full then all subsequent WALs will also be retained.  This can be reverted by removing the keep flag with `barman keep \<server_name> \<backup_id> --release`.
 
 !!!WARNING
-    Once a standalone archival backup is not required by the retention policy of a server `barman cron` will remove the WALs between that backup and the `begin_wal` value of the next most recent backup. This means that while it is safe to change the target from full to standalone, it is not safe to change the target from standalone to full because there is no guarantee the necessary WALs for a recovery to the latest point in time will still be available.
+    Once a standalone archival backup is not required by the retention policy of a server, `barman cron` will remove the WALs between that backup and the `begin_wal` value of the next most recent backup. 
+    
+    This means that while it is safe to change the target from full to standalone, it is not safe to change the target from standalone to full because there is no guarantee the necessary WALs for a recovery to the latest point in time will still be available.

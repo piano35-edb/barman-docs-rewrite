@@ -4,13 +4,16 @@
 |------------|--------------|-----------------|----------|
 |`list-backups`|Server|List the catalog of available backups for a given server|`barman list-backups`|
 
+## Syntax
 
-# Details
-
-You can list the catalog of available backups for a given server with:
 ```bash
 barman list-backups <server_name>
 ```
+
+## Details
+
+Lists the catalog of available backups for a given server.
+
 The returned output will show the backup ID.  For example, the backup ID returned here is *20111104T102647*.
 ```bash
 servername 20111104T102647 - Fri Nov  4 10:26:48 2011 - Size: 17.0 MiB - WAL Size: 100 B

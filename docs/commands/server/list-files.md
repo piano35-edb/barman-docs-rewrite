@@ -4,16 +4,16 @@
 |------------|--------------|-----------------|----------|
 |`list-files`|Server|List all the files in a particular backup|`barman list-files`|
 
-# Syntax
+## Syntax
 
 ```bash
 list-files [OPTIONS] SERVER_NAME BACKUP_ID
 ```
-# Details
+## Details
 
 List all the files in a particular backup, identified by the server name and the backup ID.  The files include base backup and required WAL files.
 
-# Options
+## Options
 |**Argument**|**Description**|**Default**|
 |-------------|--------------|-----------|
 |`--target TARGET_TYPE`|Choose the content of the list for a given backup|standalone|
@@ -26,5 +26,5 @@ The allowed values for `TARGET_TYPE` are:
 - `full`: same as data + wal.
 
 
-!!!IMPORTANT
+!!!tip
     The `list-files` command facilitates interaction with external tools, and can therefore be extremely useful to integrate Barman into your archiving procedures.

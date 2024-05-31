@@ -4,16 +4,19 @@
 |------------|--------------|-----------------|----------|
 |`get-wal`|Server|Request any xlog file from its WAL archive|`barman get-wal`|
 
+## Syntax
 
-# Details
-
-Barman allows users to request any xlog file from its WAL archive through the `get-wal` command:
 ```bash
 barman get-wal [-o OUTPUT_DIRECTORY][-j|-x] <server_name> <wal_id>
 ```
+
+## Details
+
+Barman allows users to request any xlog file from its WAL archive through the `get-wal` command:
+
 If the requested WAL file is found in the server archive, the uncompressed content will be returned to STDOUT, unless otherwise specified.
 
-# Options
+## Options
 
 The following options are available for the `get-wal` command:
 
@@ -31,6 +34,9 @@ The following options are available for the `get-wal` command:
 ||`standalone`: The backup can only be used to recover the server to its state at the time the backup was taken. Barman will only retain the WALs needed to ensure consistency of the backup.|
 |`--status`|Report the archival status of the backup. This will either be the recovery target of full or standalone for archival backups or nokeep for backups which have not been flagged as archival.|
 |`--release`|Release the keep flag from this backup. This will remove its archival status and make it available for deletion, either directly or by retention policy.|
+
+
+## Using
 
 It is possible to use `get-wal` during a recovery operation, transforming the Barman server into a WAL hub for your servers. This can be automatically achieved by adding the get-wal value to the `recovery_options` global/server configuration option:
 ```bash
@@ -52,11 +58,15 @@ This script has many useful options such as the automatic compression and decomp
 
 `barman-wal-restore` is available in the `barman-cli` package.
 
+### Restore example
+
 This is an example of a `restore_command` for a remote recovery:
 ```bash
 restore_command = 'barman-wal-restore -U barman backup SERVER %f %p'
 ```
 Since it uses SSH to communicate with the Barman server, SSH key authentication is required for the **postgres** user to login as **barman** on the backup server. If a port other than the SSH default of 22 should be used then the `--port` option can be added to specify the port that should be used for the SSH connection.
+
+### Verifying connectivity
 
 You can check that `barman-wal-restore` can connect to the Barman server, and that the required PostgreSQL server is configured in Barman to send WAL files with the following command:
 ```bash
@@ -64,7 +74,8 @@ barman-wal-restore --test backup pg DUMMY DUMMY
 ```
 Where backup is the host where Barman is installed, pg is the name of the PostgreSQL server as configured in Barman and DUMMY is a placeholder (`barman-wal-restore` requires two argument for the WAL file name and destination directory, which are ignored).
 
-If everything is configured correctly you should see the following output:
+!!!success
+    If everything is configured correctly you should see the following output:
 ```bash
 Ready to retrieve WAL files from the server pg
 For more information on the barman-wal-restore command, type man barman-wal-restore on the PostgreSQL server.

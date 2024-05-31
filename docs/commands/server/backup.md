@@ -5,7 +5,7 @@
 |`backup`|Server|Perform maintenance operations on WAL files and backups|`barman backup`|
 
 
-# Details
+## Details
 
 The backup command takes a full backup (base backup) of the given servers. It has several options that let you override the corresponding configuration parameter for the new backup. 
 
@@ -23,12 +23,7 @@ Barman 2.10 introduced the `-w/--wait` option for the backup command. When set, 
 
 If the `--wait-timeout` option is provided, Barman will stop waiting for WAL files after the specified number of seconds, and the state will remain in `WAITING_FOR_WALS`.  The `cron` command will continue to check that missing WAL files are archived, then label the backup as done.
 
-# man1
-```bash
-backup SERVER_NAME
-```
-
-Perform a backup of SERVER_NAME using parameters specified in the configuration file. Specify all as SERVER_NAME to perform a backup of all the configured servers. You can also specify SERVER_NAME multiple times to perform a backup of the specified servers -- e.g. `barman backup SERVER_1_NAME SERVER_2_NAME`.
+## Arguments
 
 |**Argument**|**Description**|**Default**|
 |-------------|--------------|-----------|
@@ -49,7 +44,7 @@ Perform a backup of SERVER_NAME using parameters specified in the configuration 
 |`--manifest`|Forces the creation of a backup manifest file at the end of a backup. Overrides value of the parameter `autogenerate_manifest`, from the configuration file. Works with rsync backup method and strategies only||
 |`--no-manifest`|Disables the automatic creation of a backup manifest file at the end of a backup. Overrides value of the parameter `autogenerate_manifest`, from the configuration file. Works with rsync backup method and strategies only||
 
-# Backup ID shortcuts
+## Backup ID shortcuts
 
 Rather than using the timestamp backup ID, you can use any of the following shortcuts/aliases to identity a backup for a given server.
 

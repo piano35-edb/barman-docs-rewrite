@@ -14,5 +14,5 @@ Lock files are used to coordinate concurrent work at global and server level (fo
 
 By default (for backward compatibility reasons), `barman_lock_directory` is set to `barman_home`.
 
-!!!recommendation
+!!!tip
     Use a directory in a volatile partition, such as the one dedicated to run-time variable data (e.g. `/var/run/barman`).

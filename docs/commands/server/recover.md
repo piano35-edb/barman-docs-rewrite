@@ -5,19 +5,19 @@
 |`recover`|Server|Recover a backup in a given directory|`barman recover`|
 
 
-# Syntax
+## Syntax
 ```bash
 barman recover \<server_name\> \<backup_id\> /path/to/recover/dir
 ```
 
-# Details
+## Details
 
 Recover a backup in a given directory (local or remote, depending on the `--remote-ssh-command` option settings). 
 
 !!!warning
     Recovery options can be complex.  Ensure you're familiar with all aspects and options of the `recovery` command before using it!  For more information on recovery procedures, see [Recovering](../../recovering/using_recovery.md).
 
-# Options
+## Options
 
 |**Argument**|**Description**|**Default**|
 |-------------|--------------|-----------|
