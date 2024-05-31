@@ -5,11 +5,11 @@
 |`wal-archive`|WAL|`archive_command` based on Barman's `put-wal`|`barman-wal-archive [*OPTIONS*] *BARMAN_HOST* *SERVER_NAME* *WAL_DEST*`|
 
 
-# Details
+## Details
 This script can be used in the `archive_command` of a PostgreSQL server to ship WAL files to a Barman host using the `put-wal` command. An SSH connection will be opened to the Barman host. `barman-wal-archive` allows the integration of Barman in PostgreSQL clusters to improve business continuity.
 
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `wal-archive` command:
 
@@ -19,7 +19,7 @@ The following positional arguments can be used with the `wal-archive` command:
 |`server_name`|The name of the server as configured in Barman.| | |
 |`wal_path`|The value of the `%p` keyword (according to `archive_command`).| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `wal-archive` command:
 
@@ -32,9 +32,7 @@ The following optional arguments can be used with the `wal-archive` command:
 |`-c CONFIG, --config CONFIG`|Configuration file on the Barman server.| | |
 |`-t, --test`|Test both the connection and the configuration of the requested PostgreSQL server in Barman to make sure it is ready to receive WAL files. With this option, the `WAL_NAME` and `WAL_DEST` mandatory arguments are ignored.| | |
 
-
-
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|

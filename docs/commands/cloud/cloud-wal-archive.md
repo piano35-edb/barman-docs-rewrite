@@ -4,7 +4,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-wal-archive`|Cloud|Archive PostgreSQL WAL files in the Cloud using `archive_command`|`barman-cloud-wal-archive [*OPTIONS*] *DESTINATION_URL* *SERVER_NAME* *WAL_PATH*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-wal-archive` is supported for the following cloud providers:
 
@@ -12,13 +12,13 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Details
+## Details
 This script can be used in the `archive_command` of a PostgreSQL server to ship WAL files to the Cloud.
 
 !!!Note
     If you're running python 2 or older unsupported versions of python 3, then avoid the compression options `--gzip` or `--bzip2`.  `barman-cloud-wal-restore` isn't able to restore gzip-compressed WALs on python versions under 3.2 or bzip2-compressed WALs on python versions under 3.3.
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-wal-archive [-V] [--help] [-v | -q] [-t]
@@ -39,7 +39,7 @@ barman-cloud-wal-archive [-V] [--help] [-v | -q] [-t]
 destination_url server_name [wal_path]
 ```
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `cloud-wal-archive` command:
 
@@ -49,7 +49,7 @@ The following positional arguments can be used with the `cloud-wal-archive` comm
 |`server_name`|The name of the server as configured in Barman.| | |
 |`wal_path`|The value of the `%p` keyword (according to `archive_command`).| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-wal-archive` command:
 
@@ -67,10 +67,10 @@ The following optional arguments can be used with the `cloud-wal-archive` comman
 |`--tags [TAGS [TAGS ...]]`|Tags to be added to archived WAL files in cloud storage| | |
 |`--history-tags [HISTORY_TAGS [HISTORY_TAGS ...]]`|Tags to be added to archived history files in cloud storage| | |
 
-# Extra options 
+## Extra options 
 The following extra options can be used with the `cloud-wal-archive` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-wal-archive` command for **aws-s3**:
 
@@ -83,7 +83,7 @@ The following extra options can be used with the `cloud-wal-archive` command for
 |`\-e {AES256,aws:kms}, --encryption {AES256,aws:kms}`|The encryption algorithm used when storing the uploaded data in S3. Allowed values: 'AES256'\|'aws:kms'.| | |
 |`\--sse-kms-key-id SSE_KMS_KEY_ID`|The AWS KMS key ID that should be used for encrypting the uploaded data in S3. Can be specified using the key ID on its own or using the full ARN for the key. Only allowed if `\`-e/--encryption\` is set to \`aws:kms\`.| | |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-wal-archive` command for **azure-blob-storage**:
 
@@ -95,7 +95,7 @@ The following extra options can be used with the `cloud-wal-archive` command for
 |`--max-concurrency MAX_CONCURRENCY`|The maximum number of chunks to be uploaded concurrently|1| |
 |`--max-single-put-size MAX_SINGLE_PUT_SIZE`|Maximum size for which the Azure client will upload an object in a single request. If this is set lower than the PostgreSQL WAL segment size after any applied compression then the concurrent chunk upload method for WAL archiving will be used.|64MB| |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 The following extra options can be used with the `cloud-wal-archive` command for **google-cloud-storage**:
 
@@ -103,7 +103,7 @@ The following extra options can be used with the `cloud-wal-archive` command for
 |------------|---------------|-----------|-----------|
 |`\--kms-key-name KMS_KEY_NAME`|The name of the GCP KMS key which should be used for encrypting the uploaded data in GCS| | |
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-wal-archive` command:
 
@@ -113,7 +113,7 @@ The following dependencies apply to the `cloud-wal-archive` command:
 |azure-blob-storage|azure-storage-blob, azure-identity *(optional, if you wish to use `DefaultAzureCredential`)*|
 |google-cloud-storage|google-cloud-storage|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|
@@ -124,7 +124,7 @@ The following dependencies apply to the `cloud-wal-archive` command:
 |Other non-zero code|Failure|
 
 
-# Additional information
+## Additional information
 
 This script can be used in conjunction with `pre_archive_retry_script` to relay WAL files to S3, as follows:
 

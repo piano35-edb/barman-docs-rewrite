@@ -4,7 +4,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-check-wal-archive`|Cloud|Check a WAL archive destination for a new PostgreSQL cluster|`barman-cloud-check-wal-archive [*OPTIONS*] *SOURCE_URL* *SERVER_NAME*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-check-wal-archive` is supported for the following cloud providers:
 
@@ -12,10 +12,10 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Details
+## Details
 Check that the WAL archive destination for **SERVER_NAME** is safe to use for a new PostgreSQL cluster. With no optional arguments (the default), this check will pass if the WAL archive is empty or if the target bucket cannot be found. All other conditions will result in failure.
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-check-wal-archive [-V] [--help] [-v | -q] [-t]
@@ -28,7 +28,7 @@ barman-cloud-check-wal-archive [-V] [--help] [-v | -q] [-t]
 destination_url server_name
 ```
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `cloud-backup-check-wal-archive` command:
 
@@ -37,7 +37,7 @@ The following positional arguments can be used with the `cloud-backup-check-wal-
 |`source_url`|URL of the cloud source, such as a bucket in AWS S3.| |`s3://bucket/path/to/folder`|
 |`server_name`|The name of the server as configured in Barman.| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-backup-check-wal-archive` command:
 
@@ -51,10 +51,10 @@ The following optional arguments can be used with the `cloud-backup-check-wal-ar
 |`\--timeline TIMELINE`|The earliest timeline whose WALs should cause the check to fail| | |
 |`\--cloud-provider {aws-s3,azure-blob-storage,google-cloud-storage}`|The cloud provider to use as a storage backend| | |
 
-# Extra options 
+## Extra options 
 The following extra options can be used with the `cloud-check-wal-archive` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-check-wal-archive` command for **aws-s3**:
 
@@ -65,7 +65,7 @@ The following extra options can be used with the `cloud-check-wal-archive` comma
 |`\--profile AWS_PROFILE`|Profile name (deprecated: replaced by `--aws-profile`)|| |
 |`\--read-timeout READ_TIMEOUT`|The time in seconds until a timeout is raised when waiting to read from a connection|60 seconds| |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-check-wal-archive` command for **azure-blob-storage**:
 
@@ -73,11 +73,11 @@ The following extra options can be used with the `cloud-check-wal-archive` comma
 |------------|---------------|-----------|-----------|
 |`\--azure-credential {azure-cli,managed-identity}, --credential {azure-cli,managed-identity}`|Optionally specify the type of credential to use when authenticating with Azure. If omitted then Azure Blob Storage credentials will be obtained from the environment and the default Azure authentication flow will be used for authenticating with all other Azure services. If no credentials can be found in the environment then the default Azure authentication flow will also be used for Azure Blob Storage.| | |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 No extra options can be used with the `cloud-check-wal-archive` command for **google-cloud-storage**.
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-check-wal-archive` command:
 
@@ -87,7 +87,7 @@ The following dependencies apply to the `cloud-check-wal-archive` command:
 |azure-blob-storage|azure-storage-blob, azure-identity *(optional, if you wish to use `DefaultAzureCredential`)*|
 |google-cloud-storage|google-cloud-storage|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|

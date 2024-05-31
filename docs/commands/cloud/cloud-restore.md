@@ -5,7 +5,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-restore`|Cloud|Restore a PostgreSQL backup from the Cloud.|`barman-cloud-restore [*OPTIONS*] *SOURCE_URL* *SERVER_NAME* *BACKUP_ID* *RECOVERY_DIR*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-restore` is supported for the following cloud providers:
 
@@ -13,11 +13,11 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Details
+## Details
 
 This script can be used to download a backup previously made with `barman-cloud-backup`.  It can also be used to prepare for recovery from a snapshot backup by checking the attached disks were cloned from the correct snapshots and downloading the backup label from object storage. 
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-restore [-V] [--help] [-v | -q] [-t]
@@ -34,7 +34,7 @@ barman-cloud-restore [-V] [--help] [-v | -q] [-t]
 source_url server_name backup_id recovery_dir
 ```
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `cloud-restore` command:
 
@@ -45,7 +45,7 @@ The following positional arguments can be used with the `cloud-restore` command:
 |`backup_id`|The backup id| | |
 |`recovery_dir`|The path to a directory for recovery| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-restore` command:
 
@@ -61,10 +61,10 @@ The following optional arguments can be used with the `cloud-restore` command:
 |`\--snapshot-recovery-instance SNAPSHOT_RECOVERY_INSTANCE`|Instance where the disks recovered from the snapshots are attached| | |
 `\--snapshot-recovery-zone GCP_ZONE`|Zone containing the instance and disks for the snapshot recovery (deprecated: replaced by `--gcp-zone`)| | |
 
-# Extra options 
+## Extra options 
 The following extra options can be used with the `cloud-restore` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-restore` command for **aws-s3**:
 
@@ -76,7 +76,7 @@ The following extra options can be used with the `cloud-restore` command for **a
 |`\--read-timeout READ_TIMEOUT`|the time in seconds until a timeout is raised when waiting to read from a connection|60 seconds| |
 |`\--aws-region AWS_REGION`|The name of the AWS region containing the EC2 VM and storage volumes defined by the `--snapshot-instance` and `--snapshot-disk` arguments.| | |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-restore` command for **azure-blob-storage**:
 
@@ -85,7 +85,7 @@ The following extra options can be used with the `cloud-restore` command for **a
 |`\--azure-credential {azure-cli,managed-identity}, --credential {azure-cli,managed-identity}`|Optionally specify the type of credential to use when authenticating with Azure. If omitted then Azure Blob Storage credentials will be obtained from the environment and the default Azure authentication flow will be used for authenticating with all other Azure services. If no credentials can be found in the environment then the default Azure authentication flow will also be used for Azure Blob Storage.| | |
 |`\--azure-resource-group AZURE_RESOURCE_GROUP`|The name of the Azure resource group to which the compute instance and disks defined by the `--snapshot-instance` and `--snapshot-disk` arguments belong.| | |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 The following extra options can be used with the `cloud-restore` command for **google-cloud-storage**:
 
@@ -94,7 +94,7 @@ The following extra options can be used with the `cloud-restore` command for **g
 |`\--gcp-zone GCP_ZONE`|Zone containing the instance and disks for the snapshot recovery| | |
 
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-restore` command:
 
@@ -105,7 +105,7 @@ The following dependencies apply to the `cloud-restore` command:
 |google-cloud-storage|\* google-cloud-storage|
 |google-cloud-storage *(with snapshot backups)*|grpcio, google-cloud-compute|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|

@@ -4,7 +4,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-wal-restore`|Cloud|Restore PostgreSQL WAL files from the Cloud using `restore_command`|`barman-cloud-wal-restore [*OPTIONS*] *SOURCE_URL* *SERVER_NAME* *WAL_NAME* *WAL_PATH*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-wal-restore` is supported for the following cloud providers:
 
@@ -12,10 +12,10 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Details
+## Details
 This script can be used as a `restore_command` to download WAL files previously archived with `barman-cloud-wal-archive`. 
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-wal-restore [-V] [--help] [-v | -q] [-t]
@@ -27,7 +27,7 @@ barman-cloud-wal-restore [-V] [--help] [-v | -q] [-t]
 source_url server_name wal_name wal_dest
 ```
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `cloud-wal-restore` command:
 
@@ -38,7 +38,7 @@ The following positional arguments can be used with the `cloud-wal-restore` comm
 |`wal_name`|The value of the `%f` keyword (according to `restore_command`).| | |
 |`wal_dest`|The value of the `%p` keyword (according to `restore_command`).| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-wal-restore` command:
 
@@ -51,10 +51,10 @@ The following optional arguments can be used with the `cloud-wal-restore` comman
 |`\-t, --test`|Test cloud connectivity and exit| | |
 |`\--cloud-provider {aws-s3,azure-blob-storage,google-cloud-storage}`|The cloud provider to use as a storage backend| | |
 
-# Extra options 
+## Extra options 
 The following extra options can be used with the `cloud-wal-restore` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-wal-restore` command for **aws-s3**:
 
@@ -65,7 +65,7 @@ The following extra options can be used with the `cloud-wal-restore` command for
 |`\--profile AWS_PROFILE`|Profile name (deprecated: replaced by `--aws-profile`)|| |
 |`\--read-timeout READ_TIMEOUT`|The time in seconds until a timeout is raised when waiting to read from a connection|60 seconds| |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-wal-restore` command for **azure-blob-storage**:
 
@@ -73,11 +73,11 @@ The following extra options can be used with the `cloud-wal-restore` command for
 |------------|---------------|-----------|-----------|
 |`\--azure-credential {azure-cli,managed-identity}, --credential {azure-cli,managed-identity}`|Optionally specify the type of credential to use when authenticating with Azure. If omitted then Azure Blob Storage credentials will be obtained from the environment and the default Azure authentication flow will be used for authenticating with all other Azure services. If no credentials can be found in the environment then the default Azure authentication flow will also be used for Azure Blob Storage.| | |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 No extra options can be used with the `cloud-wal-restore` command for **google-cloud-storage**.
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-wal-restore` command:
 
@@ -87,7 +87,7 @@ The following dependencies apply to the `cloud-wal-restore` command:
 |azure-blob-storage|azure-storage-blob, azure-identity *(optional, if you wish to use `DefaultAzureCredential`)*|
 |google-cloud-storage|google-cloud-storage|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|

@@ -5,11 +5,11 @@
 |`wal-restore`|WAL|'restore_command' based on Barman's `get-wal`|`barman-wal-restore [*OPTIONS*] *BARMAN_HOST* *SERVER_NAME* *WAL_NAME* *WAL_DEST*`|
 
 
-# Details
+## Details
 This script can be used as a `restore_command` for PostgreSQL servers, retrieving WAL files using the `get-wal` feature of Barman. An SSH connection will be opened to the Barman host. `barman-wal-restore' allows the integration of Barman in PostgreSQL clusters to improve business continuity.
 
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `wal-restore` command:
 
@@ -20,7 +20,7 @@ The following positional arguments can be used with the `wal-restore` command:
 |`wal_name`|The value of the `%f` keyword (according to `restore_command`).| | |
 |`wal_dest`|The value of the `%p` keyword (according to `restore_command`).| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `wal-restore` command:
 
@@ -39,9 +39,7 @@ The following optional arguments can be used with the `wal-restore` command:
 |`-c CONFIG, --config CONFIG`|Configuration file on the Barman server.| | |
 |`-t, --test`|Test both the connection and the configuration of the requested PostgreSQL server in Barman to make sure it is ready to receive WAL files. With this option, the `WAL_NAME` and `WAL_DEST` mandatory arguments are ignored.| | |
 
-
-
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|
