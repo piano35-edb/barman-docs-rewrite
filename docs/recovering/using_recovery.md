@@ -9,19 +9,26 @@ Barman offers a variety of recovery methods, including remote recovery, point in
 ```bash
 barman@backup\$ barman recover \<server_name\> \<backup_id\> /path/to/recover/dir
 ```
+!!!note
+    Running this command as user **barman**, will make it become the database superuser.
 
-!!!Important
-    Do not issue a recover command using a target data directory where a PostgreSQL instance is running. In that case, remember to stop it before issuing the recovery. This applies also to tablespace directories.
+## Requirements
+
+Remote recovery is the most common way to restore a PostgreSQL server with Barman.  The same requirements for PostgreSQL's [Log shipping and Point-In-Time-Recovery](https://www.postgresql.org/docs/current/static/warm-standby.html#STANDBY-PLANNING) apply:
+
+- Identical hardware architecture
+- Identical major version of PostgreSQL
+- Time is synchronised between the servers using NTP or another reliable method
+
+!!!tip
+    It's recommended to create recovery environments that are as similar as possible, if not identical, to the original server.  Such environments are easier to maintain. For example, you should ideally use the same operating system, the same PostgreSQL version, the same disk layouts, and so on.
+
+At the end of the execution of the recovery, the selected backup is recovered locally and the destination path contains a data directory ready to be used to start a PostgreSQL instance.
 
 At the end of the execution of the recovery, the selected backup is recovered locally and the destination path contains a data directory ready to be used to start a PostgreSQL instance.
 
 !!!Important
-    Running this command as user **barman**, it will become the database superuser.
-
-!!!Important
     Barman does not currently keep track of symbolic links inside PGDATA (except for tablespaces inside pg_tblspc). It's recommended that system administrators to keep track of symbolic links and to add them to the disaster recovery plans/procedures in case they need to be restored in their original location.
-
-The recovery command has several options that modify the command behavior.
 
 ## Remote recovery
 

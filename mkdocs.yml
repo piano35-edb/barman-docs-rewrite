@@ -132,7 +132,6 @@ nav:
       - 'commands/cloud/cloud-wal-restore.md'
       - 'commands/cloud/wal-restore.md'
       - 'commands/cloud/wal-archive.md'
-      - 'commands/cloud/cloud-template.md'
     - Server commands: 
       - 'commands/server/commands_server.md'
       - 'commands/server/archive-wal.md'
@@ -158,10 +157,6 @@ nav:
       - 'commands/server/switch-wal.md'
       - 'commands/server/sync-info.md'
       - 'commands/server/verify-backup.md'
-      
-    - Recovery commands: 'recovering.md'
-  
-      
   - Upgrading:
     - 'Upgrade Paths': 'upgrade_paths.md'
   - Troubleshooting: 'troubleshooting.md'

@@ -17,6 +17,9 @@ Recover a backup in a given directory (local or remote, depending on the `--remo
 !!!warning
     Recovery options can be complex.  Ensure you're familiar with all aspects and options of the `recovery` command before using it!  For more information on recovery procedures, see [Recovering](../../recovering/using_recovery.md).
 
+!!!danger
+    Don't issue a recover command using a target data directory where a PostgreSQL instance is running. In that case, remember to stop it before issuing the recovery. This applies also to tablespace directories.
+    
 ## Options
 
 |**Argument**|**Description**|**Default**|
