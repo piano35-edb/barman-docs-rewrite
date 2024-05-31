@@ -22,9 +22,11 @@ Hook scripts differ in the following ways:
 
 Specifically, when executing a retry hook script, Barman checks the return code and retries indefinitely until the script returns either of the following:
 
-- `SUCCESS` (with standard return code `0`)
-- `ABORT_CONTINUE` (return code `62`)
-- `ABORT_STOP` (return code `63`)
+|**Message**|**Return code**|
+|-----------|---------------|
+|`SUCCESS`|0|
+|`ABORT_CONTINUE`|62|
+|`ABORT_STOP`|63|
 
 Barman treats any other return code as a transient failure to be retried. 
 
