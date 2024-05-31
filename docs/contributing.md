@@ -29,7 +29,7 @@ Contributions are listed in the **AUTHORS** file of the Barman package.
 -   Didier Michel
 -   Michael Wallace
 
-## Past contributors:
+## Past contributors
 
 |**Contributor**   | **Role** |
 |--------------|------------------------------------------------|
