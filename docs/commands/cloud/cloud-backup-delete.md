@@ -4,7 +4,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-backup-delete`|Cloud|Delete backups stored in the Cloud|`barman-cloud-backup-delete [*OPTIONS*] *SOURCE_URL* *SERVER_NAME*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-backup-delete` is supported for the following cloud providers:
 
@@ -12,7 +12,7 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Details
+##  Details
 This script can be used to delete backups previously made with `barman-cloud-backup`.
 
 The target backups can be specified either using the backup ID *(as returned by barman-cloud-backup-list)* or by retention policy. Retention policies are the same as those for Barman server and work as described in the Barman manual: *all backups not required to meet the specified policy will be deleted*.
@@ -32,7 +32,7 @@ When a backup is successfully deleted any unused WALs associated with that backu
 
     If you have a significant number of backups accumulated in cloud storage, deleting by retention policy could result in a large number of delete requests.
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-backup-delete [-V] [--help] [-v \| -q] [-t]
@@ -47,7 +47,7 @@ barman-cloud-backup-delete [-V] [--help] [-v \| -q] [-t]
 [source_url server_name]
 ```
 
-# Positional arguments
+##  Positional arguments
 
 The following positional arguments can be used with the `cloud-backup-delete` command:
 
@@ -56,7 +56,7 @@ The following positional arguments can be used with the `cloud-backup-delete` co
 |`source_url`|URL of the cloud source, such as a bucket in AWS S3.| |`s3://bucket/path/to/folder`|
 |`server_name`|The name of the server as configured in Barman| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-backup-delete` command:
 
@@ -74,10 +74,10 @@ The following optional arguments can be used with the `cloud-backup-delete` comm
 |`\--dry-run`|Find the objects which need to be deleted but do not delete them| | |
 |`\--batch-size DELETE_BATCH_SIZE`|The maximum number of objects to be deleted in a single request to the cloud provider. If unset then the maximum allowed batch size for the specified cloud provider will be used (1000 for aws-s3, 256 for azure-blob-storage and 100 for google-cloud-storage).| | |
 
-# Extra options 
+##  Extra options 
 The following extra options can be used with the `cloud-backup-delete` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-backup-delete` command for **aws-s3**:
 
@@ -88,7 +88,7 @@ The following extra options can be used with the `cloud-backup-delete` command f
 |`\--profile AWS_PROFILE`|Profile name (deprecated: replaced by `--aws-profile`)|| |
 |`\--read-timeout READ_TIMEOUT`|The time in seconds until a timeout is raised when waiting to read from a connection|60 seconds| |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-backup-delete` command for **azure-blob-storage**:
 
@@ -96,11 +96,11 @@ The following extra options can be used with the `cloud-backup-delete` command f
 |------------|---------------|-----------|-----------|
 |`\--azure-credential {azure-cli,managed-identity}, --credential {azure-cli,managed-identity}`|Optionally specify the type of credential to use when authenticating with Azure. If omitted then Azure Blob Storage credentials will be obtained from the environment and the default Azure authentication flow will be used for authenticating with all other Azure services. If no credentials can be found in the environment then the default Azure authentication flow will also be used for Azure Blob Storage.| | |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 No extra options can be used with the `cloud-backup-delete` command for **google-cloud-storage**.
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-backup-delete` command:
 
@@ -110,7 +110,7 @@ The following dependencies apply to the `cloud-backup-delete` command:
 |azure-blob-storage|azure-storage-blob, azure-identity *(optional, if you wish to use `DefaultAzureCredential`)*|
 |google-cloud-storage|google-cloud-storage|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|

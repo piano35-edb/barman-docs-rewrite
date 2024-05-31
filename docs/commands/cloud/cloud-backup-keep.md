@@ -4,7 +4,7 @@
 |------------|--------------|-----------------|----------|
 |`cloud-backup-keep`|Cloud|Flag backups which should be kept forever|`barman-cloud-backup-keep [*OPTIONS*] *SOURCE_URL* *SERVER_NAME* *BACKUP_ID*`|
 
-# Supported cloud providers
+## Supported cloud providers
 
 `cloud-backup-keep` is supported for the following cloud providers:
 
@@ -12,10 +12,10 @@
 * Azure Blob Storage
 * Google Cloud Storage
 
-# Details
+## Details
 This script can be used to flag backups previously made with `barman-cloud-backup` as archival backups. Archival backups are kept forever regardless of any retention policies applied.
 
-# Usage
+## Usage
 
 ```bash
 barman-cloud-backup-keep [-V] [--help] [-v \| -q] [-t]
@@ -28,7 +28,7 @@ barman-cloud-backup-keep [-V] [--help] [-v \| -q] [-t]
 source_url server_name backup_id
 ```
 
-# Positional arguments
+## Positional arguments
 
 The following positional arguments can be used with the `cloud-backup-keep` command:
 
@@ -38,7 +38,7 @@ The following positional arguments can be used with the `cloud-backup-keep` comm
 |`server_name`|The name of the server as configured in Barman.| | |
 |`backup_id`|The backup ID of the backup to be kept.| | |
 
-# Optional arguments
+## Optional arguments
 
 The following optional arguments can be used with the `cloud-backup-keep` command:
 
@@ -54,10 +54,10 @@ The following optional arguments can be used with the `cloud-backup-keep` comman
 |`\-s, --status`|Print the keep status of the backup| | |
 |`\--target {full,standalone}`|Specify the recovery target for this backup| | |
 
-# Extra options 
+## Extra options 
 The following extra options can be used with the `cloud-backup-keep` command for the following cloud providers:
 
-**aws-s3**
+### aws-s3
 
 The following extra options can be used with the `cloud-backup-keep` command for **aws-s3**:
 
@@ -68,7 +68,7 @@ The following extra options can be used with the `cloud-backup-keep` command for
 |`\--profile AWS_PROFILE`|Profile name (deprecated: replaced by `--aws-profile`)|| |
 |`\--read-timeout READ_TIMEOUT`|The time in seconds until a timeout is raised when waiting to read from a connection|60 seconds| |
 
-**azure-blob-storage**
+### azure-blob-storage
 
 The following extra options can be used with the `cloud-backup-keep` command for **azure-blob-storage**:
 
@@ -76,11 +76,11 @@ The following extra options can be used with the `cloud-backup-keep` command for
 |------------|---------------|-----------|-----------|
 |`\--azure-credential {azure-cli,managed-identity}, --credential {azure-cli,managed-identity}`|Optionally specify the type of credential to use when authenticating with Azure. If omitted then Azure Blob Storage credentials will be obtained from the environment and the default Azure authentication flow will be used for authenticating with all other Azure services. If no credentials can be found in the environment then the default Azure authentication flow will also be used for Azure Blob Storage.| | |
 
-**google-cloud-storage**
+### google-cloud-storage
 
 No extra options can be used with the `cloud-backup-keep` command for **google-cloud-storage**.
 
-# Dependencies
+## Dependencies
 
 The following dependencies apply to the `cloud-backup-keep` command:
 
@@ -90,7 +90,7 @@ The following dependencies apply to the `cloud-backup-keep` command:
 |azure-blob-storage|azure-storage-blob, azure-identity *(optional, if you wish to use `DefaultAzureCredential`)*|
 |google-cloud-storage|google-cloud-storage|
 
-# Exit status
+## Exit status
 
 |**Exit code**|**Description**|
 |-------------|---------------|

@@ -5,7 +5,7 @@
 |`barman cron`|General|Perform maintenance operations on WAL files and backups|`barman cron`|
 
 
-# Details
+## Details
 
 Barman doesn't include a long-running daemon or service file, therefore, there's no need to use  `systemctl start`, `service start`, or similar commands.  Instead, the `barman cron` subcommand is provided to perform background "steady-state" backup operations.
 
