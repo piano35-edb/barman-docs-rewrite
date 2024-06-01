@@ -28,7 +28,12 @@ Cloud commands have a dependency on the appropriate library for the cloud provid
 Use the `--cloud-provider` option to choose the cloud provider for your backups and WALs.
 
 ## Credentials
+
+### For `aws-s3`
+
 For information on how to setup credentials for the `aws-s3` cloud provider see the *"Credentials"* section in Boto 3 documentation.
+
+### For `azure-blob-storage`
 
 For credentials for the `azure-blob-storage` cloud provider see the *"Environment variables for authorization parameters"* section in the Azure documentation. 
 

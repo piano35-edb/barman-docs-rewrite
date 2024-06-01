@@ -2,7 +2,7 @@
 
 |**Command** | **Category** |  **Description**| **Synopsis**|
 |------------|--------------|-----------------|----------|
-|`wal-restore`|WAL|'restore_command' based on Barman's `get-wal`|`barman-wal-restore [*OPTIONS*] *BARMAN_HOST* *SERVER_NAME* *WAL_NAME* *WAL_DEST*`|
+|`wal-restore`|Server|`restore_command` based on Barman's `get-wal`|`barman-wal-restore [*OPTIONS*] *BARMAN_HOST* *SERVER_NAME* *WAL_NAME* *WAL_DEST*`|
 
 
 ## Details

@@ -2,7 +2,7 @@
 
 |**Command** | **Category** |  **Description**| **Synopsis**|
 |------------|--------------|-----------------|----------|
-|`wal-archive`|WAL|`archive_command` based on Barman's `put-wal`|`barman-wal-archive [*OPTIONS*] *BARMAN_HOST* *SERVER_NAME* *WAL_DEST*`|
+|`wal-archive`|Server|`archive_command` based on Barman's `put-wal`|`barman-wal-archive [*OPTIONS*] *BARMAN_HOST* *SERVER_NAME* *WAL_DEST*`|
 
 
 ## Details
