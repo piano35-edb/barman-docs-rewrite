@@ -35,9 +35,6 @@ streaming_archiver_name: barman_receive_wal
 ```bash
 synchronous_standby_names = 'barman_receive_wal'
 ```
-!!!IMPORTANT
-    This is only an example of configuration, to show you that Barman is eligible to be a synchronous standby node. It doesn't imply to use ONLY Barman. You can read [*"Synchronous Replication"*](https://www.postgresql.org/docs/current/static/warm-standby.html#SYNCHRONOUS-REPLICATION) from the PostgreSQL documentation for further information on this topic.
-
 3. Restart the PostgreSQL server for the configuration to be reloaded.
 
 !!!success
@@ -61,6 +58,8 @@ Sent location : 0/9000098 (diff: 0 B)
 Write location : 0/9000098 (diff: 0 B)
 Flush location : 0/9000098 (diff: 0 B)
 ```
+!!!IMPORTANT
+    This is only an example of configuration, to show you that Barman is eligible to be a synchronous standby node. It doesn't imply to use ONLY Barman. You can read [*"Synchronous Replication"*](https://www.postgresql.org/docs/current/static/warm-standby.html#SYNCHRONOUS-REPLICATION) from the PostgreSQL documentation for further information on this topic.
 
 ## Catalog management features
 
@@ -100,7 +99,7 @@ For example, if the retention policy is set for a recovery window of seven days,
 Retention policies can be defined for:
 
 -   **PostgreSQL periodic base backups**: through the `retention_policy` configuration option
--   **Archive logs**, for Point-In-Time-Recovery: through the `wal_retention_policy` configuration option
+-   **Archive logs for Point-In-Time-Recovery**: through the `wal_retention_policy` configuration option
 
 !!!IMPORTANT
     In a temporal dimension, archive logs must be included in the time window of periodic backups.
