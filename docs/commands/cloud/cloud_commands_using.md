@@ -31,11 +31,11 @@ Use the `--cloud-provider` option to choose the cloud provider for your backups 
 
 ### For `aws-s3`
 
-For information on how to setup credentials for the `aws-s3` cloud provider see the *"Credentials"* section in Boto 3 documentation.
+For information on how to setup credentials for the `aws-s3` cloud provider see the *"Credentials"* section in Boto 3 documentation from the [References](#references) link.
 
 ### For `azure-blob-storage`
 
-For credentials for the `azure-blob-storage` cloud provider see the *"Environment variables for authorization parameters"* section in the Azure documentation. 
+For credentials for the `azure-blob-storage` cloud provider see the *"Environment variables for authorization parameters"* section in the Azure documentation from the [References](#references) link.
 
 The following Azure environment variables are supported: 
 
