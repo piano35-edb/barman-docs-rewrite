@@ -35,3 +35,5 @@ The following list includes the server commands.
 |`switch-wal`|Server|Make the PostgreSQL server switch to another transaction log file (WAL)|
 |`sync-info`|Server|Collect information regarding the current status of a Barman server|
 |`verify-backup`|Server|Use the `backup_manifest` file from backup and run `pg_verifybackup` against it|
+|`wal-archive`|WAL|`archive_command` based on Barman's `put-wal`|
+|`wal-restore`|WAL|'restore_command' based on Barman's `get-wal`|
