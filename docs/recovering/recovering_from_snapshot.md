@@ -4,7 +4,7 @@ Barman won't perform a fully-automated recovery from snapshot backups. This is b
 
 However, the `barman recover` command can still be used to validate the snapshot recovery instance, carry out post-recovery tasks such as checking the PostgreSQL configuration for unsafe options, and set any required PITR options. It will also copy the `backup_label` file into place (since the backup label is not stored in any of the volume snapshots), and copy across any required WALs (unless the `--get-wal` recovery option is used, in which case it will configure the PostgreSQL `restore_command` to fetch the WALs).
 
-If restoring a backup made with `barman-cloud-backup` the `barman-cloud-restore` command should be used instead of `barman recover`.
+If restoring a backup made with `barman-cloud-backup`, use the `barman-cloud-restore` command instead of `barman recover`.
 
 ## Process
 
@@ -184,6 +184,6 @@ The following fields are available in `snapshots_info/snapshots/*/provider`:
 
 |**Field**|**Description**|
 |----------|---------------|
-|`device_name`: The device to which the source disk was mapped on the backup VM at the time of the backup|
-|`snapshot_id`: The ID of the snapshot as assigned by AWS|
-|`snapshot_name`: The name of the snapshot|
+|`device_name`|The device to which the source disk was mapped on the backup VM at the time of the backup|
+|`snapshot_id`|The ID of the snapshot as assigned by AWS|
+|`snapshot_name`|The name of the snapshot|
