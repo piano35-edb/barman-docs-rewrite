@@ -42,24 +42,36 @@ To take a snapshot backup with `barman-cloud`, use `barman-cloud-backup` with th
 `--snapshot-disk` (can be used multiple times for multiple disks)
 `--snapshot-instance`
 
-If the `--cloud-provider` is `google-cloud-storage` then the following arguments are also required:
+### Required arguments
+
+The following arguments are also required for your specific cloud provider.
+
+### For GCP
+
+If the `--cloud-provider` is `google-cloud-storage`:
 
 `--gcp-project`
 `--gcp-zone`
 
-If the `--cloud-provider` is `azure-blob-storage` then the following arguments are also required:
+### For Azure
+
+If the `--cloud-provider` is `azure-blob-storage`:
 
 `--azure-subscription-id`
 `--azure-resource-group`
 
-If the `--cloud-provider` is `aws-s3` then the following optional arguments can be used:
+### For AWS
+
+If the `--cloud-provider` is `aws-s3`, the following are **optional** arguments:
 
 `--aws-profile`
 `--aws-region`
 
-The following options cannot be used with `barman-cloud-backup` when cloud snapshots are requested:
+### Unavailable options
+
+The following options can't be used with `barman-cloud-backup` when cloud snapshots are requested:
 
 `--bzip2`, `--gzip` or `--snappy`
 `--jobs`
 
-Once a backup has been taken it can be managed using the standard `barman-cloud` commands such as `barman-cloud-backup-delete` and `barman-cloud-backup-keep`.
+Once a backup has been taken, it can be managed using the standard `barman-cloud` commands such as `barman-cloud-backup-delete` and `barman-cloud-backup-keep`.

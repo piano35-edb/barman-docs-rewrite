@@ -27,6 +27,8 @@ The following additional requirements apply to snapshot backups on Google Cloud 
 -   All disks included in the snapshot backup must be zonal persistent disks. Regional persistent disks aren't supported.
 -   A service account with the required set of permissions must be available to Barman. This can be achieved by attaching such an account to the compute instance running Barman (recommended) or by using the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to a credentials file.
 
+### Required permissions for GCP
+
 The required permissions are:
 
 -   compute.disks.createSnapshot
@@ -53,6 +55,8 @@ The following additional requirements apply to snapshot backups on Azure:
 -   All disks included in the snapshot backup must be managed disks which are attached to the VM instance as data disks.
 -   Barman must be able to use a credential obtained either using managed identity or CLI login and this must grant access to Azure with the required set of permissions.
 
+### Required permissions for Azure
+
 The following permissions are required:
 
 -   Microsoft.Compute/disks/read
@@ -73,6 +77,8 @@ The following additional requirements and limitations apply to snapshot backups 
 
 -   All disks included in the snapshot backup must be non-root EBS volumes and must be attached to the same VM instance.
 -   NVMe volumes aren't supported.
+
+### Required permissions for AWS
 
 The following permissions are required:
 
