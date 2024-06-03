@@ -12,7 +12,7 @@ The `backup_method` option activates the rsync backup method, and the `ssh_comma
 !!!IMPORTANT
     You won't be able to start a backup if WAL is not being correctly archived to Barman, either through the archiver or the `streaming_archiver`.
 
-To check if the server configuration is valid you can use the `barman check` command:
+To check if the server configuration is valid, you can use the `barman check` command:
 ```bash
 barman@backup\$ barman check pg
 ```

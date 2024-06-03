@@ -2,10 +2,7 @@
 
 ## Disk space
 
-The most **critical** requirement for a Barman server is the amount of disk space available. 
-
-!!!tip
-    It's recommended that you plan the required disk space based on:
+The most **critical** requirement for a Barman server is the amount of disk space available. You should plan the required disk space based on:
 - The size of the cluster
 - Number of WAL files generated per day
 - Frequency of backups
