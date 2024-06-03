@@ -4,7 +4,7 @@ This default behaviour can be changed through the `immediate_checkpoint` configu
 
 If `immediate_checkpoint` is set to true, PostgreSQL will not try to limit the workload, and the checkpoint will happen at maximum speed, starting the backup as soon as possible.
 
-At any time, you can override the configuration option behaviour, by issuing barman backup with any of these two options:
+You can override the configuration option behavior, by issuing `barman backup` with any of these two options:
 
--   `\--immediate-checkpoint`, which forces an immediate checkpoint;
--   `\--no-immediate-checkpoint`, which forces to wait for the checkpoint to happen.
+-   `\--immediate-checkpoint`:  Forces an immediate checkpoint.
+-   `\--no-immediate-checkpoint`:  Forces to wait for the checkpoint to happen.
