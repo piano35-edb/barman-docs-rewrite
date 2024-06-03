@@ -108,7 +108,8 @@ The following additional parameters must be set when using GCP:
 gcp_project = GCP_PROJECT_ID
 gcp_zone = ZONE
 ```
-- `gcp_project`:  Set to the ID of the GCP project which owns the instance and storage volumes defined by `snapshot_instance` and `snapshot_disks`. 
+- `gcp_project`:  Set to the ID of the GCP project which owns the instance and storage volumes defined by `snapshot_instance` and `snapshot_disks`.
+
 - `gcp_zone`:  Set to the availability zone in which the instance is located.
 
 ### Configuration for Azure snapshots
@@ -119,6 +120,7 @@ azure_subscription_id = AZURE_SUBSCRIPTION_ID
 azure_resource_group = AZURE_RESOURCE_GROUP
 ```
 - `azure_subscription_id`: Set to the ID of the Azure subscription ID which owns the instance and storage volumes defined by `snapshot_instance` and `snapshot_disks`. 
+
 - `azure_resource_group`: Set to the resource group to which the instance and disks belong.
 
 ### Configuration for AWS snapshots
