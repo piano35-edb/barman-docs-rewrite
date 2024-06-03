@@ -66,11 +66,13 @@ Barman wraps PostgreSQL's Point-in-Time Recovery (PITR), allowing you to specify
 
 The recovery target can be specified using one of the following mutually exclusive options:
 
--   `\--target-time TARGET_TIME`: to specify a timestamp
--   `\--target-xid TARGET_XID`: to specify a transaction ID
--   `\--target-lsn TARGET_LSN`: to specify a Log Sequence Number (LSN) - requires PostgreSQL 10 or higher
--   `\--target-name TARGET_NAME`: to specify a named restore point previously created with the pg_create_restore_point(name) function
--   `\--target-immediate`: recovery ends when a consistent state is reached (that is the end of the base backup process)
+|**Option**|**Description**|
+|----------|---------------|
+|`\--target-time TARGET_TIME`|Specify a timestamp|
+|`\--target-xid TARGET_XID`|Specify a transaction ID|
+|`\--target-lsn TARGET_LSN`|Specify a Log Sequence Number (LSN) - requires PostgreSQL 10 or higher|
+|`\--target-name TARGET_NAME`|Specify a named restore point previously created with the `pg_create_restore_point`(name) function|
+|`\--target-immediate`|Recovery ends when a consistent state is reached *(that is the end of the base backup process)*|
 
 !!!Important
     Recovery target via *time*, *XID* and LSN **must be** subsequent to the end of the backup. If you want to recover to a point in time between the start and the end of a backup, you must recover from the previous backup in the catalog.
@@ -91,10 +93,11 @@ For more information about timelines, see the PostgreSQL documentation.
 ### Target action option
 
 Barman 2.4 added support for `--target-action` option.  It accepts the following values:
-
--  `shutdown`: once recovery target is reached, PostgreSQL is shut down
--  `pause`: once recovery target is reached, PostgreSQL is started in pause state, allowing users to inspect the instance
--  `promote`: once recovery target is reached, PostgreSQL will exit recovery and is promoted as a master
+|**Value**|**Description**|
+|----------|---------------|
+|`shutdown`|Once recovery target is reached, PostgreSQL is shut down|
+|`pause`|Once recovery target is reached, PostgreSQL is started in pause state, allowing users to inspect the instance|
+|`promote`|Once recovery target is reached, PostgreSQL will exit recovery and is promoted as a master|
 
 !!!Important
     By default, no target action is defined (for back compatibility). The `--target-action` option requires a Point In Time Recovery target to be specified.
@@ -103,7 +106,7 @@ For more information on the above settings, see the [PostgreSQL documentation on
 
 ### Standby mode option
 
-Barman 2.4 also adds the `--standby-mode` option for the recover command which, if specified, properly configures the recovered instance as a standby by creating a `standby.signal` file (from PostgreSQL versions lower than 12), or by adding `standby_mode = on` to the generated recovery configuration.
+Barman 2.4 and higher versions can use the `--standby-mode` option for the recover command which will configures the recovered instance as a standby by creating a `standby.signal` file *(from PostgreSQL versions lower than 12)*, or by adding `standby_mode = on` to the generated recovery configuration.
 
 For more information on PostgreSQL standby mode, see the official documentation:
 
@@ -119,13 +122,13 @@ For more information on PostgreSQL standby mode, see the official documentation:
 
 ## Fetching WALs from the Barman server
 
-The `barman recover` command can optionally configure PostgreSQL to fetch WALs from Barman during recovery. This is enabled by setting the `recovery_options` global/server configuration option to `get-wal`. If `recovery_options` is not set or is empty then Barman will instead copy the WALs required for recovery while executing the `barman recover` command.
+The `barman recover` command can optionally configure PostgreSQL to fetch WALs from Barman during recovery. You can enable it by setting the `recovery_options` global/server configuration option to `get-wal`. If `recovery_options` isn't set or is empty, Barman will instead copy the WALs required for recovery while executing the `barman recover` command.
 
 The `--get-wal` and `--no-get-wal` options can be used to override the behaviour defined by recovery_options. Use `--get-wal` with `barman recover` to enable the fetching of WALs from the Barman server.  Use `--no-get-wal` to disable it.
 
 ## Recovering compressed backups
 
-If a backup has been compressed using the `backup_compression` option then barman recover is able to uncompress the backup on recovery. This is a multi-step process:
+If a backup has been compressed using the `backup_compression` option, `barman recover` is able to uncompress the backup on recovery. This is a multi-step process:
 
 1.  The compressed backup files are copied to a staging directory on the local or remote server using rsync.
 2.  The compressed files are uncompressed to the target directory.
