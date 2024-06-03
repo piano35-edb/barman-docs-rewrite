@@ -17,10 +17,10 @@ There are two types of hook scripts that Barman can manage:
 
 Hook scripts differ in the following ways:
 
-- Barman executes a standard hook script only once, without checking its return code.
-- Barman may execute a retry hook script more than once, depending on its return code.
+- **Standard**:  Barman executes a standard hook script only once, without checking its return code.
+- **Retry**:  Barman may execute a retry hook script more than once, depending on its return code.
 
-Specifically, when executing a retry hook script, Barman checks the return code and retries indefinitely until the script returns either of the following:
+When executing a retry hook script, Barman checks the return code and retries indefinitely until the script returns either of the following:
 
 |**Message**|**Return code**|
 |-----------|---------------|

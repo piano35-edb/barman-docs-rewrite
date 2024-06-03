@@ -1,6 +1,6 @@
 # Cloud hook scripts
 
-To use cloud hook scripts, install the `barman-cli-cloud` package on the Barman server.
+To use cloud hook scripts, install the `barman-cli-cloud` package on the Barman server.  You can use cloud hook scripts for a post-backup or pre-wal archive.
 
 ## As a post-backup
 
@@ -15,7 +15,9 @@ post_backup_retry_script = 'barman-cloud-backup [*OPTIONS*] *DESTINATION_URL* ${
 ```
 
 !!!WARNING
-    When running as a hook script `barman-cloud-backup` requires that the status of the backup is `DONE` and it will fail if the backup has any other status. For this reason it is recommended backups are run with the `-w / --wait` option so that the hook script is not executed while a backup has status `WAITING_FOR_WALS`.
+    When running as a hook script `barman-cloud-backup` requires that the status of the backup is `DONE`.  It will fail if the backup has any other status. 
+    
+    It's recommended to run backups with the `-w / --wait` option so the hook script isn't executed while a backup has a status of `WAITING_FOR_WALS`.
 
 ## As a pre-wal archive
 
