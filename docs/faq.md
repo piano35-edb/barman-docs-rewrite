@@ -1,14 +1,9 @@
 # F.A.Q.
 
-??? Question
-    Does barman perform physical backup of PostgreSQL databases?
-    ??? Answer
-    Yes. Barman is an application for physical backups of PostgreSQL servers that manages base backups and WAL archiving. It is a disaster recovery application. barman does not support logical backups (aka dumps).
+??? Does barman perform physical backup of PostgreSQL databases?
+    Yes. Barman is an application for physical backups of PostgreSQL servers that manages base backups and WAL archiving. It's a disaster recovery application. Barman doesn't support logical backups (aka dumps).
 
-!!!Question
-I am already using pg_dump. What is the difference between pg_dump and barman and why should I use Barman instead?
-
-!!!Answer
+??? What's the difference between pg_dump and Barman and why should I use Barman instead?
     If you already use pg_dump, it is a good thing. However, if your business is based on your PostgreSQL database, logical backups (the ones performed by pg_dump) are not enough. These dumps are snapshots of your database at a particular time of your day. Usually we perform these activities at night. If a crash occurs during the day, all your transactions between the time of the dump and the crash are lost. Forever. In this context, you need to put in place a more robust solution for disaster recovery, based on physical backups. barman is one of these, but not the only one. Similar tools, also open-source, are pg-rman and OmniPITR which are quite different from barman.
 
 3.  I manage several PostgreSQL instances. Can Barman manage more than one PostgreSQL server centrally?
