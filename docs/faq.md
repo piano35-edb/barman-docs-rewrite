@@ -3,17 +3,15 @@
 ??? "Does barman perform physical backup of PostgreSQL databases?"
     Yes. Barman is an application for physical backups of PostgreSQL servers that manages base backups and WAL archiving. It's a disaster recovery application. Barman doesn't support logical backups (aka dumps).
 
-???"What's the difference between pg_dump and Barman and why should I use Barman instead?"
-    "If you already use pg_dump, it is a good thing. However, if your business is based on your PostgreSQL database, logical backups (the ones performed by pg_dump) are not enough. These dumps are snapshots of your database at a particular time of your day. Usually we perform these activities at night. If a crash occurs during the day, all your transactions between the time of the dump and the crash are lost. Forever. In this context, you need to put in place a more robust solution for disaster recovery, based on physical backups. barman is one of these, but not the only one. Similar tools, also open-source, are pg-rman and OmniPITR which are quite different from barman."
+??? "What's the difference between pg_dump and Barman and why should I use Barman instead?"
+    If you already use pg_dump, it is a good thing. However, if your business is based on your PostgreSQL database, logical backups (the ones performed by pg_dump) are not enough. These dumps are snapshots of your database at a particular time of your day. Usually we perform these activities at night. If a crash occurs during the day, all your transactions between the time of the dump and the crash are lost. Forever. In this context, you need to put in place a more robust solution for disaster recovery, based on physical backups. barman is one of these, but not the only one. Similar tools, also open-source, are pg-rman and OmniPITR which are quite different from barman.
 
-3.  I manage several PostgreSQL instances. Can Barman manage more than one PostgreSQL server centrally?
-
+??? "I manage several PostgreSQL instances. Can Barman manage more than one PostgreSQL server centrally?"
 !!!Answer
     Yes. barman has been designed to allow remote backups of PostgreSQL servers. It allows DBAs to manage the backups of multiple servers from a centralised host. barman allows definition of a catalogue of PostgreSQL servers for base backups and continuous archiving of WAL segments.
 
-4.  Does Barman manage replication and high availability as well? How does it compare with repmgr, OmniPITR, walmgr and similar tools?
-
-!!!Answer
+??? "Does Barman manage replication and high availability as well? How does it compare with repmgr, OmniPITR, walmgr and similar tools?"
+    !!!Answer
     No. Barman aims to be a pure disaster recovery solution. It is responsible for the sole backup of a cluster of PostgreSQL servers. If high availability is what you are looking for, we encourage you to use repmgr. barman specifically targets the DR case only, because it requires a simpler and less invasive design than the one required to cover HA. This is why barman does not duplicate existing HA tools like the ones mentioned above. You do not need to install anything on the server. The only requirement is to configure access for the barman client, which is less invasive than what is required for HA.
 
 5.  Can you define retention policies. Does barman manage them?
