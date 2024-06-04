@@ -64,12 +64,13 @@ nav:
     - 'License': 'license.md'
     - 'Release Notes': 'release-notes.md'
     - 'Support': 'support.md'
+    - 'F.A.Q.': 'faq.md'
     - 'Contributing': 'contributing.md'
     - 'Philosophy': 'philosophy.md'
 
   - Getting Started: 'getting-started.md'
   - Download: 'download.md'
-  
+
   - Installing:
     - 'Version Support': 'version_support.md'
     - 'Requirements and Limitations': 'reqs_limits.md'

@@ -8,6 +8,10 @@ You can obtain professional support, community support, and submit bug reports f
 ## Professional Support
 [EnterpriseDB](https://www.enterprisedb.com/) provides professional support and training courses for Barman, including 24/7 technical support.
 
+### Email
+
+info@pgbarman.org
+
 ## Community Support
 
 You can obtain community support or reach the Barman development team with the following:
