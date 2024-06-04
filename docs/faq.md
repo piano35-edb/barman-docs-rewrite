@@ -46,35 +46,35 @@
 ## Backup
 
 ??? "How many backups can Barman handle for every PostgreSQL server? Can it handle just one backup per server or more?"
-Barman allows the storage of multiple base backups per PostgreSQL server. You can actually list every backup for that particular server, along with their dimensions on disks and the number of directly associated WAL files. The only limit on the number of backups is disk space.
+    Barman allows the storage of multiple base backups per PostgreSQL server. You can actually list every backup for that particular server, along with their dimensions on disks and the number of directly associated WAL files. The only limit on the number of backups is disk space.
 ??? "I have continuous archiving in place, but managing WAL files and understanding which ones “belong” to a particular base backup is not obvious. Can Barman simplify this?"
-Fortunately yes. The way Barman works is to keep separate base backups from WAL segments for a specific server. Even though they are much related, Barman sees a WAL archive as a continuous stream of data from the first base backup to the last available. A neat feature of Barman is to link every WAL file to a base backup so that it is possible to determine the size of a backup in terms of two components: base backup and WAL segments.
+    Fortunately yes. The way Barman works is to keep separate base backups from WAL segments for a specific server. Even though they are much related, Barman sees a WAL archive as a continuous stream of data from the first base backup to the last available. A neat feature of Barman is to link every WAL file to a base backup so that it is possible to determine the size of a backup in terms of two components: base backup and WAL segments.
 ??? "Can Barman compress base backups?"
-Currently, Barman can compress backups using the postgres backup method, thanks to pg_basebackup compression features. This can be enabled using the backup_compression config option. For rsync based backups, at the moment there is no compression method, but it is feasible and the current design allows it. We are seeking sponsors interested in developing the compression feature of rsync base backups.
+    Currently, Barman can compress backups using the postgres backup method, thanks to pg_basebackup compression features. This can be enabled using the backup_compression config option. For rsync based backups, at the moment there is no compression method, but it is feasible and the current design allows it. We are seeking sponsors interested in developing the compression feature of rsync base backups.
 ??? "Can Barman compress WAL segments?"
-Yes. You can specify your compression filter for WAL segments, and dramatically reduce the size of your WAL files by 5/10 times.
+    Yes. You can specify your compression filter for WAL segments, and dramatically reduce the size of your WAL files by 5/10 times.
 ??? "Does Barman backup tablespaces?"
-Yes. Tablespaces are handled transparently and automatically by Barman.
-Barman backup is stuck on “Asking PostgreSQL server to finalize the backup”. What am I supposed to do?
-This probably means that the WAL shipping process is not working properly. Make sure that the archive_command on the PostgreSQL server is correctly shipping them in the expected WAL incoming directory.
+    Yes. Tablespaces are handled transparently and automatically by Barman.
+??? "Barman backup is stuck on “Asking PostgreSQL server to finalize the backup”. What am I supposed to do?" 
+    This probably means that the WAL shipping process is not working properly. Make sure that the archive_command on the PostgreSQL server is correctly shipping them in the expected WAL incoming directory.
 ??? "Can I backup from a PostgreSQL standby?"
-Yes, Barman natively supports backup from standby servers for both postgres and rsync backup methods.
+    Yes, Barman natively supports backup from standby servers for both postgres and rsync backup methods.
 
 ## Recovery
 
 ??? "Can I specify different retention policies for base backups and WAL segments?"
-Yes, definitely. It might happen for instance that you want to keep base backups of the last 12 months and keep WALs for Point-In-Time-Recovery for the last month only.
+    Yes, definitely. It might happen for instance that you want to keep base backups of the last 12 months and keep WALs for Point-In-Time-Recovery for the last month only.
 ??? "Does Barman manage recovery?"
-Yes. With Barman you can recover a PostgreSQL instance on your backup server or a remote one.
+    Yes. With Barman you can recover a PostgreSQL instance on your backup server or a remote one.
 ??? "Does Barman manage recovery to a specific transaction or to a specific time?"
-Yes. With Barman you can recover a PostgreSQL instance and specify a transaction ID or a time for targets. It is just a matter of adding an option to your recover command.
+    Yes. With Barman you can recover a PostgreSQL instance and specify a transaction ID or a time for targets. It is just a matter of adding an option to your recover command.
 ??? "Does Barman support timelines?"
-Yes, Barman handles PostgreSQL timelines for recovery.
+    Yes, Barman handles PostgreSQL timelines for recovery.
 ??? "Does Barman manage remote recovery?"
-Yes.
+    Yes.
 ??? "Does Barman manage tablespaces for recovery operations?"
-Yes. You can also relocate a specific tablespace to another directory.
+    Yes. You can also relocate a specific tablespace to another directory.
 ??? "Does Barman support flashbacks?"
-Currently no. However, we will get there. Adding a time machine feature to PostgreSQL is feasible with Barman and requires a bit of coding. Once again, if you need this feature and are in the position to sponsor it, please contact us.
+    Currently no. However, we will get there. Adding a time machine feature to PostgreSQL is feasible with Barman and requires a bit of coding. Once again, if you need this feature and are in the position to sponsor it, please contact us.
 ??? "During recovery, does Barman allow me to relocate the PGDATA directory? What about tablespaces?"
-Yes. When recovering a server, you can specify different locations for your PGDATA directory and all your tablespaces (if any). This allows you to setup temporary sandbox servers. This is particularly useful in case you want to recover a table that you have unintentionally dropped from the master by dumping the table from the sandbox server and then recreating it in your master server.
+    Yes. When recovering a server, you can specify different locations for your PGDATA directory and all your tablespaces (if any). This allows you to setup temporary sandbox servers. This is particularly useful in case you want to recover a table that you have unintentionally dropped from the master by dumping the table from the sandbox server and then recreating it in your master server.
