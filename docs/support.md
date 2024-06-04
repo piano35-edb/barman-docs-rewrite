@@ -8,9 +8,9 @@ You can obtain professional support, community support, and submit bug reports f
 ## Professional Support
 [EnterpriseDB](https://www.enterprisedb.com/) provides professional support and training courses for Barman, including 24/7 technical support.
 
-### Email
+## Email
 
-info@pgbarman.org
+You can email the Barman team directly here:  info@pgbarman.org
 
 ## Community Support
 
@@ -28,13 +28,3 @@ To submit a bug report, use the following procedure:
 
 !!!warning
     Before submitting the output of the `barman diagnose` command, review the output to ensure it doesn't contain sensitive information.
-
-## FAQs and articles
-
-You can read the Barman FAQs and external blog articles here:
-
--   [Barman website](https://www.pgbarman.org/)
--   [Barman support](https://www.pgbarman.org/support/)
-
--   [Barman FAQs](https://www.pgbarman.org/faq/)
--   [2ndQuadrant blog: Barman articles](https://blog.2ndquadrant.com/tag/barman/)
