@@ -5,8 +5,8 @@
 ??? "Does Barman perform physical backup of PostgreSQL databases?"
     Yes. Barman is an application for physical backups of PostgreSQL servers that manages base backups and WAL archiving. It's a disaster recovery application. Barman doesn't support logical backups (aka dumps).
 
-??? "What's the difference between pg_dump and Barman and why should I use Barman instead?"
-    If you already use pg_dump, it is a good thing. However, if your business is based on your PostgreSQL database, logical backups (the ones performed by pg_dump) are not enough. These dumps are snapshots of your database at a particular time of your day. Usually we perform these activities at night. If a crash occurs during the day, all your transactions between the time of the dump and the crash are lost. Forever. In this context, you need to put in place a more robust solution for disaster recovery, based on physical backups. Barman is one of these, but not the only one. Similar tools, also open-source, are pg-rman and OmniPITR which are quite different from Barman.
+??? "What's the difference between `pg_dump` and Barman and why should I use Barman instead?"
+    If you already use `pg_dump`, it is a good thing. However, if your business is based on your PostgreSQL database, logical backups (the ones performed by `pg_dump`) are not enough. These dumps are snapshots of your database at a particular time of your day. Usually we perform these activities at night. If a crash occurs during the day, all your transactions between the time of the dump and the crash are lost. Forever. In this context, you need to put in place a more robust solution for disaster recovery, based on physical backups. Barman is one of these, but not the only one. Similar tools, also open-source, are pg-rman and OmniPITR which are quite different from Barman.
 
 ??? "I manage several PostgreSQL instances. Can Barman manage more than one PostgreSQL server centrally?"
     Yes. Barman has been designed to allow remote backups of PostgreSQL servers. It allows DBAs to manage the backups of multiple servers from a centralised host. Barman allows definition of a catalogue of PostgreSQL servers for base backups and continuous archiving of WAL segments.
@@ -50,13 +50,13 @@
 ??? "I have continuous archiving in place, but managing WAL files and understanding which ones “belong” to a particular base backup is not obvious. Can Barman simplify this?"
     Fortunately yes. The way Barman works is to keep separate base backups from WAL segments for a specific server. Even though they are much related, Barman sees a WAL archive as a continuous stream of data from the first base backup to the last available. A neat feature of Barman is to link every WAL file to a base backup so that it is possible to determine the size of a backup in terms of two components: base backup and WAL segments.
 ??? "Can Barman compress base backups?"
-    Currently, Barman can compress backups using the postgres backup method, thanks to pg_basebackup compression features. This can be enabled using the backup_compression config option. For rsync based backups, at the moment there is no compression method, but it is feasible and the current design allows it. We are seeking sponsors interested in developing the compression feature of rsync base backups.
+    Currently, Barman can compress backups using the postgres backup method, thanks to `pg_basebackup` compression features. This can be enabled using the `backup_compression` config option. For rsync based backups, at the moment there is no compression method, but it is feasible and the current design allows it. We are seeking sponsors interested in developing the compression feature of rsync base backups.
 ??? "Can Barman compress WAL segments?"
     Yes. You can specify your compression filter for WAL segments, and dramatically reduce the size of your WAL files by 5/10 times.
 ??? "Does Barman backup tablespaces?"
     Yes. Tablespaces are handled transparently and automatically by Barman.
 ??? "Barman backup is stuck on “Asking PostgreSQL server to finalize the backup”. What am I supposed to do?" 
-    This probably means that the WAL shipping process is not working properly. Make sure that the archive_command on the PostgreSQL server is correctly shipping them in the expected WAL incoming directory.
+    This probably means that the WAL shipping process is not working properly. Make sure that the `archive_command` on the PostgreSQL server is correctly shipping them in the expected WAL incoming directory.
 ??? "Can I backup from a PostgreSQL standby?"
     Yes, Barman natively supports backup from standby servers for both postgres and rsync backup methods.
 
