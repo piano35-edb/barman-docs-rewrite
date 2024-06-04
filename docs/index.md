@@ -5,4 +5,4 @@ EDB Backup and Recovery Manager (Barman) is a backup and recovery solution for P
 You can export Barman backups to multiple destinations, including tape, Amazon S3, Google Cloud, or Azure Blob Storage.
 
 
-[Download](download.md){ .md-button }
+[Download Barman](download.md){ .md-button }

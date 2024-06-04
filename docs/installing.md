@@ -8,7 +8,9 @@ Barman can be installed on the following:
 
 ## Downloads
 
-Official packages for Barman are distributed by EnterpriseDB through repositories listed on the [Barman downloads page](https://pgbarman.org/downloads/).
+Official packages for Barman are distributed by EnterpriseDB through repositories listed on the [Downloads page](download.md).
+
+[Download Barman](download.md){ .md-button }
 
 !!!note
     These packages use the default **python3** version provided by the target operating system. If an alternative **python3** version is required, you must install Barman from source.
