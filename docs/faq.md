@@ -1,4 +1,6 @@
-# F.A.Q.
+# Frequently asked questions (F.A.Q.)
+
+## General
 
 ??? "Does barman perform physical backup of PostgreSQL databases?"
     Yes. Barman is an application for physical backups of PostgreSQL servers that manages base backups and WAL archiving. It's a disaster recovery application. Barman doesn't support logical backups (aka dumps).
@@ -32,3 +34,12 @@
 
 ??? "Does Barman allow to cap to bandwidth usage for backup and recovery?"
     Version 1.2.1 introduces support for bandwidth limitation at global, server and tablespace level.
+
+## Installation and Configuration
+
+??? "Does barman have to be installed on the same server than PostgreSQL?"
+    No. barman does not necessarily require to be on the same host where PostgreSQL is running. It is your choice to install it locally or on another server (usually dedicated for backup purposes).
+??? "Setting up and managing physical backups in PostgreSQL is not trivial. Is barman easy to setup and configure?"
+    barman is written in Python and the installer is able to download and install all the required dependencies. We have adopted a configuration by convention approach, that allows administrators to specify configuration options at global and server level but makes barman work the same in case we want to stick with the default options. All you need to do is specify a root directory for barman then, for each server, a Postgres connection and an SSH connection. The most complicated task you need to do is to configure WAL archiving in the PostgreSQL server in order to ship WAL files to barman.
+??? "Can you have more barman configurations in a backup server?"
+    Yes. barman needs a configuration file. You can have a system wide configuration (/etc/barman.conf) or a user configuration (~/.barman.conf). For instance, you could setup several users in your system that use barman, each of those working on a subset of your managed PostgreSQL servers. This way you can protect your backups on a user basis.
