@@ -68,6 +68,7 @@ nav:
     - 'Philosophy': 'philosophy.md'
 
   - Getting Started: 'getting-started.md'
+  - Download: 'download.md'
   
   - Installing:
     - 'Version Support': 'version_support.md'
