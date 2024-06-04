@@ -26,7 +26,7 @@ The main features and goals of Barman are:
 - Hub of WAL files for enhanced integration with standby servers
 - Management of retention policies for backups and WAL files
 - Compression of WAL files (bzip2, gzip or custom)
-- Management of base backups and WAL files through a catalogue
+- Management of base backups and WAL files through a catalog
 - Pre/Post backup hook scripts
 
 And best of all, Barman is developed purely in Python.
