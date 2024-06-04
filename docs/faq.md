@@ -43,3 +43,22 @@
     barman is written in Python and the installer is able to download and install all the required dependencies. We have adopted a configuration by convention approach, that allows administrators to specify configuration options at global and server level but makes barman work the same in case we want to stick with the default options. All you need to do is specify a root directory for barman then, for each server, a Postgres connection and an SSH connection. The most complicated task you need to do is to configure WAL archiving in the PostgreSQL server in order to ship WAL files to barman.
 ??? "Can you have more barman configurations in a backup server?"
     Yes. barman needs a configuration file. You can have a system wide configuration (/etc/barman.conf) or a user configuration (~/.barman.conf). For instance, you could setup several users in your system that use barman, each of those working on a subset of your managed PostgreSQL servers. This way you can protect your backups on a user basis.
+
+## Recovery
+
+??? "Can I specify different retention policies for base backups and WAL segments?"
+Yes, definitely. It might happen for instance that you want to keep base backups of the last 12 months and keep WALs for Point-In-Time-Recovery for the last month only.
+??? "Does barman manage recovery?"
+Yes. With barman you can recover a PostgreSQL instance on your backup server or a remote one.
+??? "Does barman manage recovery to a specific transaction or to a specific time?"
+Yes. With barman you can recover a PostgreSQL instance and specify a transaction ID or a time for targets. It is just a matter of adding an option to your recover command.
+??? "Does barman support timelines?"
+Yes, barman handles PostgreSQL timelines for recovery.
+??? "Does barman manage remote recovery?"
+Yes.
+??? "Does barman manage tablespaces for recovery operations?"
+Yes. You can also relocate a specific tablespace to another directory.
+??? "Does barman support flashbacks?"
+Currently no. However, we will get there. Adding a time machine feature to PostgreSQL is feasible with barman and requires a bit of coding. Once again, if you need this feature and are in the position to sponsor it, please contact us.
+??? "During recovery, does barman allow me to relocate the PGDATA directory? What about tablespaces?"
+Yes. When recovering a server, you can specify different locations for your PGDATA directory and all your tablespaces (if any). This allows you to setup temporary sandbox servers. This is particularly useful in case you want to recover a table that you have unintentionally dropped from the master by dumping the table from the sandbox server and then recreating it in your master server.
