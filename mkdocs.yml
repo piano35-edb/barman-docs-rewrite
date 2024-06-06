@@ -172,9 +172,9 @@ nav:
       - 'scripts/wal-delete-scripts.md'
       - 'scripts/recovery-scripts.md'
       - 'scripts/script-variables.md'
-  - Additional Reading:
-    - 'Books': 'external_content/books.md'
+  - Blog:
     - 'Blogs': 'external_content/blogs.md'
+    - 'Books': 'external_content/books.md'
     - 'Tutorials': 'external_content/tutorials.md'
 
 extra:
