@@ -1,0 +1,6196 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://piano35-edb.github.io/configuring/configuring_options/">
+      
+      
+        <link rel="prev" href="../configuration_files/">
+      
+      
+        <link rel="next" href="../configuration_examples/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Configuring Options - Barman  (Backup and Recovery Manager for PostgreSQL)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-options" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Barman  (Backup and Recovery Manager for PostgreSQL)" class="md-header__button md-logo" aria-label="Barman  (Backup and Recovery Manager for PostgreSQL)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Barman  (Backup and Recovery Manager for PostgreSQL)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuring Options
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../license/" class="md-tabs__link">
+          
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../getting-started/" class="md-tabs__link">
+        
+  
+    
+  
+  Getting Started
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../download/" class="md-tabs__link">
+        
+  
+    
+  
+  Download
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../version_support/" class="md-tabs__link">
+          
+  
+    
+  
+  Installing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../configuration_files/" class="md-tabs__link">
+          
+  
+    
+  
+  Configuring
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../customizing/binary_paths/" class="md-tabs__link">
+          
+  
+    
+  
+  Customizing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../backing_up/requirements/" class="md-tabs__link">
+          
+  
+    
+  
+  Backing Up
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../recovering/using_recovery/" class="md-tabs__link">
+          
+  
+    
+  
+  Recovering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../commands/using_commands/" class="md-tabs__link">
+          
+  
+    
+  
+  Commands
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../upgrade_paths/" class="md-tabs__link">
+          
+  
+    
+  
+  Upgrading
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../troubleshooting/" class="md-tabs__link">
+        
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../scripts/backup-scripts/" class="md-tabs__link">
+          
+  
+    
+  
+  Scripts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../external_content/blogs/" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Barman  (Backup and Recovery Manager for PostgreSQL)" class="md-nav__button md-logo" aria-label="Barman  (Backup and Recovery Manager for PostgreSQL)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Barman  (Backup and Recovery Manager for PostgreSQL)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    F.A.Q.
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../philosophy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Philosophy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Installing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../version_support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Version Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reqs_limits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements and Limitations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Configuring
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Configuring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Options
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring_new_server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring a New Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring_ssh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring SSH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring_wal_archiving_replication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring WAL Archiving and Replication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring_wal_streaming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring WAL Streaming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuring_windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Windows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Customizing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Customizing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/binary_paths/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Binary Paths
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/cluster_integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/configuration_models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/geographical_redundancy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geographical Redundancy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/lock_file_directory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lock File Directory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/parallel_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customizing/passive_nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passive Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Backing Up
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Backing Up
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/requirements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/bandwidth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bandwidth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/cloud-backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud and snapshot backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/compression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/concurrent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/immediate_checkpoint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Immediate Checkpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/incremental/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Incremental Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/local_backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/streaming_backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streaming Backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/rsync_ssh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups with rsync / SSH
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backing_up/cloud_snapshots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups with cloud snapshots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Recovering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Recovering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recovering/using_recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recovering/cloud-restores/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud and snapshot restores
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recovering/recovering_from_snapshot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recovering from snapshot backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/using_commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/barman-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Barman CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    General commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            General commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/general/commands_general/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    General commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/general/cron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cron
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/general/diagnose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagnose
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/general/list-servers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List-servers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Backup commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            Backup commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/backup/check-backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    check-backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/backup/show-backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    show-backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cloud commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud_commands_using/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Cloud commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-backup-delete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud backup delete
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-backup-keep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud backup keep
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-backup-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud backup list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-backup-show/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud backup show
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-check-wal-archive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud check-wal-archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud restore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-wal-archive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud wal-archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/cloud/cloud-wal-restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud wal-restore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Server commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            Server commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/commands_server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Server commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/archive-wal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    archive-wal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    check
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/config-update/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    config-update
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/config-switch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    config-switch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/delete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    delete
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/generate-manifest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    generate-manifest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/get-wal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    get-wal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/keep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    keep
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/list-backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    list-backups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/list-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    list-files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/list-servers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    list-servers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/lock-directory-cleanup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lock-directory-cleanup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/put-wal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    put-wal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/rebuild-xlogdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rebuild-xlogdb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/receive-wal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    receive-wal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/recover/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    recover
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/replication-status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    replication-status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/show-servers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    show-servers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/switch-wal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    switch-wal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/sync-info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sync-info
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/verify-backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    verify-backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/wal-restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wal-restore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../commands/server/wal-archive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wal-archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Upgrading
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Upgrading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../upgrade_paths/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrade Paths
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Scripts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Scripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/backup-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/backup-delete-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup delete scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/cloud-hook-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud hook scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/hook-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/wal-archive-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wal archive scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/wal-delete-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wal delete scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/recovery-scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recovery scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scripts/script-variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Script variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../external_content/blogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blogs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../external_content/books/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Books
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../external_content/tutorials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h1>
+<p>The following options are available:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active</code></td>
+<td>True</td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>When set to true, the server is in full operational state. When set to false, the server can be used for diagnostics, but any operational command such as backup execution or WAL archiving is temporarily disabled. When adding a new server to Barman, we suggest setting <code>active=false</code> at first, making sure that barman check shows no problems, and only then activating the server. This will avoid spamming the Barman logs with errors during the initial setup.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archiver</code></td>
+<td>False</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to activate log file shipping through PostgreSQL's <code>archive_command</code> for a server. If set to true, Barman expects that continuous archiving for a server is in place and will activate checks as well as management (including compression) of WAL files that Postgres deposits in the incoming directory. Setting it to false (default), will disable standard continuous archiving for a server. Note: If neither <code>archiver</code> nor <code>streaming_archiver</code> are set, Barman will automatically set this option to true. This is in order to maintain parity with deprecated behaviour where archiver would be enabled by default. This behaviour will be removed from the next major Barman version.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archiver_batch_size</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to activate batch processing of WAL files for the archiver process, by setting it to a value &gt; 0. Otherwise, the traditional unlimited processing of the WAL queue is enabled. When batch processing is activated, the archive-wal process would limit itself to maximum <code>archiver_batch_size</code> WAL segments per single run. Integer.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autogenerate_manifest</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option enables the auto-generation of backup manifest files for rsync based backups and strategies. The manifest file is a JSON file containing the list of files contained in the backup. It is generated at the end of the backup process and stored in the backup directory. The manifest file generated follows the format described in the postgesql documentation, and is compatible with the <code>pg_verifybackup</code> tool. The option is ignored if the backup method is not rsync.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aws_profile</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The name of the AWS profile to use when authenticating with AWS (e.g. INI section in AWS credentials file).</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aws_region</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The name of the AWS region containing the EC2 VM and storage volumes defined by <code>snapshot_instance</code> and <code>snapshot_disks</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>azure_credential</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The credential type (either <code>azure-cli</code> or `managed-identity) to use when authenticating with Azure. If this is omitted then the default Azure authentication flow will be used.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>azure_resource_group</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The name of the Azure resource group to which the compute instance and disks defined by <code>snapshot_instance</code> and <code>snapshot_disks</code> belong. Required when the snapshot value is specified for backup_method and snapshot_provider is set to azure.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>azure_subscription_id</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The ID of the Azure subscription which owns the instance and storage volumes defined by <code>snapshot_instance</code> and <code>snapshot_disks</code>. Required when the snapshot value is specified for <code>backup_method</code> and <code>snapshot_provider</code> is set to azure.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_compression</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The compression to be used during the backup process. Only supported when <code>backup_method = postgres</code>. Can either be unset or gzip,lz4, zstd or none. If unset then no compression will be used during the backup. Use of this option requires that the CLI application for the specified compression algorithm is available on the Barman server (at backup time) and the PostgreSQL server (at recovery time). Note that the lz4 and zstd algorithms require PostgreSQL 15 (beta) or later. Note that none compression will create an archive not compressed.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_compression_format</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The format <code>pg_basebackup</code> should use when writing compressed backups to disk. Can be set to either <code>plain</code> or <code>tar</code>. If unset then a default of <code>tar</code> is assumed. The value <code>plain</code> can only be used if the server is running PostgreSQL 15 or later and if <code>backup_compression_location</code> is server. Only supported when <code>backup_method = postgres</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_compression_level</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>An integer value representing the compression level to use when compressing backups. Allowed values depend on the compression algorithm specified by <code>backup_compression</code>. Only supported when <code>backup_method = postgres.</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_compression_location</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The location (either client or server) where compression should be performed during the backup. The value server is only allowed if the server is running PostgreSQL 15 or later.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_compression_workers</code></td>
+<td>0</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The number of compression threads to be used during the backup process. Only supported when <code>backup_compression = zstd</code> is set.  In this case default compression behavior will be used.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_directory</code></td>
+<td></td>
+<td>Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory where backup data for a server will be placed.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_method</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Configure the method barman used for backup execution. If set to rsync (default), barman will execute backup using the rsync command over SSH (requires ssh_command). If set to postgres barman will use the pg_basebackup command to execute the backup. If set to local-rsync, barman will assume to be running on the same server as the PostgreSQL instance and with the same user, then execute rsync for the file system copy. If set to snapshot, barman will use the API for the cloud provider defined in the snapshot_provider option to create snapshots of disks specified in the snapshot_disks option and save only the backup label and metadata to its own storage.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backup_options</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to control the way Barman interacts with PostgreSQL for backups. It is a comma-separated list of values that accepts the following options:</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>concurrent_backup</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>barman backup</code> executes backup operations using concurrent backup which is the recommended backup approach for PostgreSQL versions &gt;= 9.6 and uses the PostgreSQL API.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>concurrent_backup</code> can also be used to perform a backup from a standby server.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>exclusive_backup</code> (PostgreSQL versions older than 15 only): barman backup executes backup operations using the deprecated exclusive backup approach (technically through <code>pg_start_backup</code> and <code>pg_stop_backup</code>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>external_configuration</code>: if present, any warning regarding external configuration files is suppressed during the execution of a backup.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Note that <code>exclusive_backup</code> and <code>concurrent_backup</code> are mutually exclusive.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bandwidth_limit</code></td>
+<td>0</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to specify a maximum transfer rate in kilobytes per second. A value of zero specifies no limit.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>barman_home</code></td>
+<td></td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Main data directory for Barman.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>barman_lock_directory</code></td>
+<td><code>%(barman_home)s</code></td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory for locks.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>basebackup_retry_sleep</code></td>
+<td>30</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Number of seconds of wait after a failed copy, before retrying. Used during both backup and recovery operations. Positive integer.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>basebackup_retry_times</code></td>
+<td>0</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Number of retries of base backup copy, after an error. Used during both backup and recovery operations. Positive integer.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>basebackups_directory</code></td>
+<td></td>
+<td>Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory where base backups will be placed.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>check_timeout</code></td>
+<td>30</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Maximum execution time, in seconds per server, for a <code>barman check</code> command. Set to 0 to disable the timeout. Positive integer.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cluster</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Name of the Barman cluster associated with a Barman server or model. Used by Barman to group servers and configuration models that can be applied to them. Can be omitted for servers, in which case it defaults to the server name. Must be set for configuration models, so Barman knows the set of servers which can apply a given model.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compression</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Standard compression algorithm applied to WAL files. Possible values are: gzip (requires gzip to be installed on the system), bzip2 (requires bzip2), pigz (requires pigz), pygzip (Python's internal gzip compressor) and pybzip2 (Python's internal bzip2 compressor).</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Scope: Global/Server/Model.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config_changes_queue</code></td>
+<td></td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Barman uses a queue to apply configuration changes requested through barman config-update command. This allows it to serialize multiple requests of configuration changes, and also retry an operation which has been abruptly terminated. This configuration option allows you to specify where in the filesystem the queue should be written. By default Barman writes to a file named <code>cfg_changes.queue</code> under <code>barman_home</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conninfo</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Connection string used by Barman to connect to the Postgres server. This is a libpq connection string, consult the PostgreSQL manual for more information. Commonly used keys are: <code>host, hostaddr, port, dbname, user, password</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create_slot</code></td>
+<td>manual</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>When set to auto and slot_name is defined, Barman automatically attempts to create the replication slot if not present. When set to manual, the replication slot needs to be manually created.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>custom_compression_filter</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Customised compression algorithm applied to WAL files.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>custom_compression_magic</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Customised compression magic which is checked in the beginning of a WAL file to select the custom algorithm. If you are using a custom compression filter then setting this will prevent barman from applying the custom compression to WALs which have been pre-compressed with that compression. If you do not configure this then custom compression will still be applied but any pre-compressed WAL files will be compressed again during WAL archive.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>custom_decompression_filter</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Customized decompression algorithm applied to compressed WAL files. This must match the compression algorithm.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A human-readable description of a server.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors_directory</code></td>
+<td></td>
+<td>Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory that contains WAL files that contain an error; usually this is related to a conflict with an existing WAL file (e.g. a WAL file that has been archived after a streamed one).</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forward_config_path</code></td>
+<td>false</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Parameter which determines whether a passive node should forward its configuration file path to its primary node during cron or sync-info commands. Set to <code>true</code> if you are invoking barman with the<code>-c/--config</code> option and your configuration is in the same place on both the passive and primary barman servers.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gcp_project</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The ID of the GCP project which owns the instance and storage volumes defined by <code>snapshot_instance</code> and <code>snapshot_disks</code>. Required when the snapshot value is specified for <code>backup_method</code> and <code>snapshot_provider</code> is set to <code>gcp</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gcp_zone</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The name of the availability zone where the compute instance and disks to be backed up in a snapshot backup are located. Required when the snapshot value is specified for <code>backup_method</code> and <code>snapshot_provider</code> is set to <code>gcp</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>immediate_checkpoint</code></td>
+<td>false</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to control the way PostgreSQL handles checkpoint at the start of the backup. If set to <code>false</code>, the I/O workload for the checkpoint will be limited, according to the <code>checkpoint_completion_target</code> setting on the PostgreSQL server. If set to <code>true</code>, an immediate checkpoint will be requested, meaning that PostgreSQL will complete the checkpoint as soon as possible.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incoming_wals_directory</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory where incoming WAL files are archived into. Requires archiver to be enabled.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>last_backup_maximum_age</code></td>
+<td>empty</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option identifies a time frame that must contain the latest backup. If the latest backup is older than the time frame,  the <code>barman check</code> command will report an error to the user. If empty, the latest backup is always considered valid. The syntax for this option is: "i (DAYS</td>
+<td>WEEKS</td>
+<td>MONTHS)" where <code>i</code> is an integer greater than zero, representing the number of days</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>last_backup_minimum_size</code></td>
+<td>empty</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option identifies lower limit to the acceptable size of the latest successful backup. If the latest backup is smaller than the specified size, the <code>barman check</code> command will report an error to the user. If empty, the latest backup is always considered valid. The syntax for this option is: "i (k</td>
+<td>Ki</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>last_wal_maximum_age</code></td>
+<td>empty</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option identifies a time frame that must contain the latest WAL file archived. If the latest WAL file is older than the time frame, the <code>barman check</code> command will report an error to the user. If empty, the age of the WAL files is not checked. The syntax is the same as the <code>last_backup_maximum_age</code> option.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lock_directory_cleanup</code></td>
+<td></td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Enables automatic cleaning up of the <code>barman_lock_directory</code> from unused lock files.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log_file</code></td>
+<td></td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Location of Barman's log file.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log_level</code></td>
+<td></td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Level of logging (DEBUG, INFO, WARNING, ERROR, CRITICAL).</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_incoming_wals_queue</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Maximum number of WAL files in the incoming queue (in both streaming and archiving pools) that are allowed before barman check returns an error (that does not block backups). Default: None (disabled).</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minimum_redundancy</code></td>
+<td>0</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Minimum number of backups to be retained.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>model</code></td>
+<td></td>
+<td>Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>By default any section configured in the Barman configuration files define the configuration for a Barman server. If you set <code>model = true</code> in a section, that turns that section into a configuration model for a given cluster. Cannot be set as false.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>network_compression</code></td>
+<td>false</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to enable data compression for network transfers. If set to false, no compression is used. If set to true, compression is enabled, reducing network usage.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parallel_jobs</code></td>
+<td>1</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option controls how many parallel workers will copy files during a backup or recovery command. For backup purposes, it works only when <code>backup_method</code> is rsync.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parallel_jobs_start_batch_period</code></td>
+<td>1 second</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The time period in seconds over which a single batch of jobs will be started.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parallel_jobs_start_batch_size</code></td>
+<td>10 jobs</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Maximum number of parallel jobs to start in a single batch.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path_prefix</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>One or more absolute paths, separated by colon, where Barman looks for executable files. The paths specified in <code>path_prefix</code> are tried before the ones specified in <code>PATH</code> environment variable.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_archive_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after a WAL file is archived by maintenance. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. In a post archive scenario, ABORT_STOP has currently the same effects as ABORT_CONTINUE.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_archive_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after a WAL file is archived by maintenance, after 'post_archive_retry_script'.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_backup_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after a base backup. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. In a post backup scenario, ABORT_STOP has currently the same effects as ABORT_CONTINUE.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_backup_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after a base backup, after 'post_backup_retry_script'.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_delete_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after the deletion of a backup. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. In a post delete scenario, ABORT_STOP has currently the same effects as ABORT_CONTINUE.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_delete_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after the deletion of a backup, after 'post_delete_retry_script'.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_recovery_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after a recovery. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. In a post recovery scenario, ABORT_STOP has currently the same effects as ABORT_CONTINUE.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_recovery_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after a recovery, after 'post_recovery_retry_script'.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_wal_delete_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after the deletion of a WAL file. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. In a post delete scenario, ABORT_STOP has currently the same effects as ABORT_CONTINUE.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>post_wal_delete_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched after the deletion of a WAL file, after 'post_wal_delete_retry_script'.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_archive_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before a WAL file is archived by maintenance, after 'pre_archive_script'. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. Returning ABORT_STOP will propagate the failure at a higher level and interrupt the WAL archiving operation.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_archive_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before a WAL file is archived by maintenance.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_backup_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before a base backup, after 'pre_backup_script'. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. Returning ABORT_STOP will propagate the failure at a higher level and interrupt the backup operation.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_backup_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before a base backup.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_delete_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before the deletion of a backup, after 'pre_delete_script'. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. Returning ABORT_STOP will propagate the failure at a higher level and interrupt the backup deletion.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_delete_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before the deletion of a backup.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_recovery_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before a recovery, after 'pre_recovery_script'. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. Returning ABORT_STOP will propagate the failure at a higher level and interrupt the recover operation.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_recovery_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before a recovery.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_wal_delete_retry_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before the deletion of a WAL file, after 'pre_wal_delete_script'. Being this a retry hook script, Barman will retry the execution of the script until this either returns a SUCCESS (0), an ABORT_CONTINUE (62) or an ABORT_STOP (63) code. Returning ABORT_STOP will propagate the failure at a higher level and interrupt the WAL file deletion.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre_wal_delete_script</code></td>
+<td></td>
+<td>Global/Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hook script launched before the deletion of a WAL file.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>primary_checkpoint_timeout</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This defines the amount of seconds that Barman will wait at the end of a backup if no new WAL files are produced, before forcing a checkpoint on the primary server.  If not set or set to 0, Barman will not force a checkpoint on the primary, and wait indefinitely for new WAL files to be produced.  The value of this option should be greater of the value of the <code>archive_timeout</code> set on the primary server.  This option works only if <code>primary_conninfo</code> option is set, and it is ignored otherwise.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>primary_conninfo</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The connection string used by Barman to connect to the primary Postgres server during backup of a standby Postgres server. Barman will use this connection to carry out any required WAL switches on the primary during the backup of the standby. This allows backups to complete even when <code>archive_mode = always</code> is set on the standby and write traffic to the primary is not sufficient to trigger a natural WAL switch.  If <code>primary_conninfo</code> is set then it must be pointing to a primary Postgres instance and conninfo must be pointing to a standby Postgres instance. Furthermore both instances must share the same systemid. If these conditions are not met then barman check will fail.  The <code>primary_conninfo</code> value must be a libpq connection string.  Consult the PostgreSQL manual for more information. Commonly used keys are: <code>host, hostaddr, port, dbname, user, password</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>primary_ssh_command</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Parameter that identifies a Barman server as passive. In a passive node, the source of a backup server is a Barman installation rather than a PostgreSQL server. If <code>primary_ssh_command</code> is specified, Barman uses it to establish a connection with the primary server. Empty by default, it can also be set globally.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recovery_options</code></td>
+<td>empty</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Options for recovery operations. Currently only supports get-wal. get-wal activates generation of a basic restore_command in the resulting recovery configuration that uses the barman get-wal command to fetch WAL files directly from Barman's archive of WALs. Comma separated list of values.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recovery_staging_path</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A path to a location on the recovery host (either the barman server or a remote host if <code>--remote-ssh-command</code> is also used) where files for a compressed backup will be staged before being uncompressed to the destination directory. Backups will be staged in their own directory within the staging path according to the following naming convention: "barman-staging-SERVER_NAME-BACKUP_ID". The staging directory within the staging path will be removed at the end of the recovery process. This option is required when recovering from compressed backups and has no effect otherwise.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>retention_policy</code></td>
+<td>empty</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Policy for retention of periodic backups and archive logs. If left empty, retention policies are not enforced. For redundancy based retention policy use "REDUNDANCY i" (where i is an integer &gt; 0 and defines the number of backups to retain). For recovery window retention policy use "RECOVERY WINDOW OF i DAYS" or "RECOVERY WINDOW OF i WEEKS" or "RECOVERY WINDOW OF i MONTHS" where i is a positive integer representing, specifically, the number of days, weeks or months to retain your backups.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>retention_policy_mode</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Currently only "auto" is implemented.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reuse_backup</code></td>
+<td>off</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option controls incremental backup support. Possible values are:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>off</code>: disabled;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>copy</code>: reuse the last available backup for a server and create a copy of the unchanged files (reduce backup time);</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>link</code>: reuse the last available backup for a server and create a hard link of the unchanged files (reduce backup time and space). Requires operating system and file system support for hard links.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slot_name</code></td>
+<td>None</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Physical replication slot to be used by the <code>receive-wal</code> command when streaming_archiver is set to on.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshot_disks</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A comma-separated list of disks which should be included in a backup taken using cloud snapshots. Required when the snapshot value is specified for <code>backup_method</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshot_instance</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The name of the VM or compute instance where the storage volumes are attached. Required when the snapshot value is specified for <code>backup_method</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>snapshot_provider</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The name of the cloud provider which should be used to create snapshots. Required when the snapshot value is specified for <code>backup_method</code>. Supported values: <code>gcp</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ssh_command</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Command used by Barman to login to the Postgres server via ssh.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streaming_archiver</code></td>
+<td>off</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to use the PostgreSQL's streaming protocol to receive transaction logs from a server. If set to on, Barman expects to find <code>pg_receivewal</code> (known as <code>pg_receivexlog</code> prior to PostgreSQL 10) in the <code>PATH</code> (see <code>path_prefix option</code>) and that streaming connection for the server is working. This activates connection checks as well as management (including compression) of WAL files. If set to off, Barman will rely only on continuous archiving for a server WAL archive operations, eventually terminating any running <code>pg_receivexlog</code> for the server.  If neither <code>streaming_archiver</code> nor archiver are set, Barman will automatically set archiver to true. This is in order to maintain parity with deprecated behaviour where archiver would be enabled by default. This behaviour will be removed from the next major Barman version.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streaming_archiver_batch_size</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to activate batch processing of WAL files for the <code>streaming_archiver</code> process, by setting it to a value &gt; 0. Otherwise, the traditional unlimited processing of the WAL queue is enabled. When batch processing is activated, the <code>archive-wal</code> process would limit itself to maximum <code>streaming_archiver_batch_size</code> WAL segments per single run. Integer.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streaming_archiver_name</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Identifier to be used as application_name by the <code>receive-wal</code> command. Only available with <code>pg_receivewal</code> (or <code>pg_receivexlog</code> &gt;= 9.3). By default it is set to <code>barman_receive_wal</code>.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streaming_backup_name</code></td>
+<td><code>barman_streaming_backup</code></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Identifier to be used as application_name by the pg_basebackup command.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streaming_conninfo</code></td>
+<td><code>conninfo</code></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Connection string used by Barman to connect to the Postgres server via streaming replication protocol.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>streaming_wals_directory</code></td>
+<td></td>
+<td>Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory where WAL files are streamed from the PostgreSQL server to Barman. Requires <code>streaming_archiver</code> to be enabled.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tablespace_bandwidth_limit</code></td>
+<td>0</td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>This option allows you to specify a maximum transfer rate in kilobytes per second, by specifying a comma separated list of tablespaces (pairs TBNAME:BWLIMIT). A value of zero specifies no limit.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wal_conninfo</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A connection string which, if set, will be used by Barman to connect to the Postgres server when checking the status of the replication slot used for receiving WALs. If left unset then Barman will use the connection string defined by <code>wal_streaming_conninfo</code>. If <code>wal_conninfo</code> is set but <code>wal_streaming_conninfo</code> is unset then <code>wal_conninfo</code> will be ignored.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wal_retention_policy</code></td>
+<td></td>
+<td>Global/Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Policy for retention of archive logs (WAL files). Currently only "MAIN" is available.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wal_streaming_conninfo</code></td>
+<td></td>
+<td>Server/Model</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A connection string which, if set, will be used by Barman to connect to the Postgres server when receiving WAL segments via the streaming replication protocol. If left unset then Barman will use the connection string defined by <code>streaming_conninfo</code> for receiving WAL segments.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Scope</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wals_directory</code></td>
+<td></td>
+<td>Server</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Directory which contains WAL files.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2011-2024  <a href="https://www.enterprisedb.com"  target="_blank" rel="noopener"></a>  <a href="https://www.enterprisedb.com/contact" target"_blank" rel="noopener">EnterpriseDB Corporation.  All rights reserved. </a> 
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/user/EnterpriseDB" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/EDBPostgres" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/enterprisedb" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/EDBpostgres" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.path", "navigation.indexes", "navigation.top", "toc.integrate", null, "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
